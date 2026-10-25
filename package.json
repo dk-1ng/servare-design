@@ -12,14 +12,17 @@
   "scripts": {
     "dev": "node scripts/build.ts --serve",
     "build": "node scripts/build.ts",
-    "typecheck": "tsc --noEmit && tsc --noEmit -p scripts",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p scripts && tsc --noEmit -p test",
     "lint": "eslint . && prettier --check .",
     "format": "prettier --write .",
-    "test": "echo 'No tests yet (Playwright harness arrives with issue #2)'",
-    "check": "pnpm lint && pnpm typecheck && pnpm build && pnpm test"
+    "test": "playwright test",
+    "check": "pnpm lint && pnpm typecheck && pnpm build && pnpm test",
+    "test:screens": "SCREENS=1 playwright test screens"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
     "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.64.1",
     "@types/node": "^26.6.5",
     "esbuild": "^0.28.2",
     "eslint": "^10.13.0",
