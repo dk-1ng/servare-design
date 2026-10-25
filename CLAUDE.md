@@ -32,15 +32,15 @@ Status field `PVTSSF_lAHOE9rcGM4BosX0zhnLQDU` · options: Todo `99009eb3` · In 
 
 The main session is expected to run on **Sonnet** (`/model sonnet`). It orchestrates, does small issues inline and delegates the rest to the agents in `.claude/agents/`:
 
-| Agent             | Model                                        | Use for                                                                                     |
-| ----------------- | -------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| `ux-architect`    | Opus                                         | `type: research`/`spike`, flows, information architecture, layout decisions, ADRs, contract gaps |
-| `visual-designer` | Opus                                         | Moodboard from reference images, visual direction, tokens, palette and contrast, icon/logo  |
-| `prototyper`      | Sonnet (pass `model: "opus"` for `complexity: high`) | Wireframes in HTML, components, mock client, pages, tooling                         |
-| `ux-writer`       | Sonnet                                       | UI copy en/pt-BR, tone of voice, error messages, pseudo-localization                        |
-| `qa-auditor`      | Sonnet                                       | Playwright screenshots, axe, keyboard, no-network and long-text checks                      |
-| `reviewer`        | Opus                                         | Reviewing every branch before the PR                                                        |
-| `tracker`         | Haiku                                        | Labels, project cards, status comments                                                      |
+| Agent             | Model                                                | Use for                                                                                          |
+| ----------------- | ---------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `ux-architect`    | Opus                                                 | `type: research`/`spike`, flows, information architecture, layout decisions, ADRs, contract gaps |
+| `visual-designer` | Opus                                                 | Moodboard from reference images, visual direction, tokens, palette and contrast, icon/logo       |
+| `prototyper`      | Sonnet (pass `model: "opus"` for `complexity: high`) | Wireframes in HTML, components, mock client, pages, tooling                                      |
+| `ux-writer`       | Sonnet                                               | UI copy en/pt-BR, tone of voice, error messages, pseudo-localization                             |
+| `qa-auditor`      | Sonnet                                               | Playwright screenshots, axe, keyboard, no-network and long-text checks                           |
+| `reviewer`        | Opus                                                 | Reviewing every branch before the PR                                                             |
+| `tracker`         | Haiku                                                | Labels, project cards, status comments                                                           |
 
 Subagents start without this conversation's context: delegate only when the task is large or needs a different model, and give them the issue number, branch and any decision already made.
 
