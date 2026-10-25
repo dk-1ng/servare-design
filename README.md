@@ -31,7 +31,7 @@ This project is directed by its maintainer and executed with AI coding agents (C
 
 ## Run the prototype
 
-Requires Node 22+ (see `.nvmrc`) and pnpm.
+Requires Node 22.18+ (see `.nvmrc`) and pnpm.
 
 ```sh
 pnpm install

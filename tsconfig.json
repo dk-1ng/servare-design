@@ -15,6 +15,6 @@
     "exactOptionalPropertyTypes": true,
     "verbatimModuleSyntax": true
   },
-  "include": ["prototype/src", "*.config.js"],
+  "include": ["prototype/src"],
   "exclude": ["node_modules", "dist", "prototype/dist"]
 }
