@@ -1,0 +1,31 @@
+{
+  "name": "servare-design",
+  "description": "Design repository for Servare: framework-free HTML/CSS/TypeScript prototype on mock data.",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "packageManager": "pnpm@12.15.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "node scripts/build.ts --serve",
+    "build": "node scripts/build.ts",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p scripts",
+    "lint": "eslint . && prettier --check .",
+    "format": "prettier --write .",
+    "test": "echo 'No tests yet (Playwright harness arrives with issue #2)'",
+    "check": "pnpm lint && pnpm typecheck && pnpm build && pnpm test"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^26.6.5",
+    "esbuild": "^0.28.2",
+    "eslint": "^10.13.0",
+    "globals": "^17.13.0",
+    "prettier": "^3.9.10",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.72.0"
+  }
+}

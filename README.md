@@ -6,14 +6,14 @@ This repository holds the design work: research, flows, decisions, a framework-f
 
 ## What is here
 
-| Path                                   | Contents                                                                    |
-| -------------------------------------- | --------------------------------------------------------------------------- |
-| [`docs/brief.md`](docs/brief.md)       | One-page product and design brief                                           |
-| [`docs/process.md`](docs/process.md)   | Design process, phases and glossary                                         |
-| [`docs/decisions/`](docs/decisions/)   | Architecture/design decision records (ADRs)                                 |
-| `docs/discovery/`, `flows/`, `visual/` | Outputs of each phase                                                       |
-| `docs/spec/`                           | Final spec: tokens, components, state catalog, strings, contract gaps       |
-| [`references/`](references/)           | Pinned copies of the Servare contract and design document                   |
+| Path                                   | Contents                                                                     |
+| -------------------------------------- | ---------------------------------------------------------------------------- |
+| [`docs/brief.md`](docs/brief.md)       | One-page product and design brief                                            |
+| [`docs/process.md`](docs/process.md)   | Design process, phases and glossary                                          |
+| [`docs/decisions/`](docs/decisions/)   | Architecture/design decision records (ADRs)                                  |
+| `docs/discovery/`, `flows/`, `visual/` | Outputs of each phase                                                        |
+| `docs/spec/`                           | Final spec: tokens, components, state catalog, strings, contract gaps        |
+| [`references/`](references/)           | Pinned copies of the Servare contract and design document                    |
 | `prototype/`                           | Prototype pages (popup, history, options, state gallery) and the mock client |
 
 ## Principles
@@ -28,6 +28,18 @@ This repository holds the design work: research, flows, decisions, a framework-f
 ## How this project is built
 
 This project is directed by its maintainer and executed with AI coding agents (Claude Code). The workflow is versioned with the code: [`CLAUDE.md`](CLAUDE.md) holds the rules and the per-issue loop, and [`.claude/agents/`](.claude/agents/) defines the specialized agents. Every change goes through an issue, a branch, an automated review and a pull request, and is merged only after the maintainer reviews and approves it.
+
+## Run the prototype
+
+Requires Node 22+ (see `.nvmrc`) and pnpm.
+
+```sh
+pnpm install
+pnpm dev     # serves prototype/ at http://127.0.0.1:8000, rebuilding on change
+pnpm check   # lint, typecheck, build and test (also run by CI)
+```
+
+Each `prototype/src/pages/*.ts` file is bundled by esbuild into `prototype/dist/`, so `prototype/` is the folder to serve or load as an extension. The dev server listens on loopback only and the prototype loads nothing remote. There are no runtime dependencies.
 
 ## Tracking
 

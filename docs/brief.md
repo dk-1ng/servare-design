@@ -23,14 +23,14 @@ A **non-technical person by default** who wants to save a video they are watchin
 
 ## Surfaces (priority order)
 
-| Surface                                  | Contract                   | Servare milestone |
-| ---------------------------------------- | -------------------------- | ----------------- |
-| Popup: media list, choices, queue        | §2.1–§3, §4.1–4.2, §5      | M1–M4             |
-| History                                  | §4.3                       | M1                |
-| Scan page / MSE notice                   | §4.1 `media/scan`          | M4                |
-| Options page                             | §4.4, design §6–§7         | M5                |
-| Preview, context menu, shortcuts         | servare#36                 | M5                |
-| Sidebar (Firefox), designed last         | design §2.2                | later             |
+| Surface                           | Contract              | Servare milestone |
+| --------------------------------- | --------------------- | ----------------- |
+| Popup: media list, choices, queue | §2.1–§3, §4.1–4.2, §5 | M1–M4             |
+| History                           | §4.3                  | M1                |
+| Scan page / MSE notice            | §4.1 `media/scan`     | M4                |
+| Options page                      | §4.4, design §6–§7    | M5                |
+| Preview, context menu, shortcuts  | servare#36            | M5                |
+| Sidebar (Firefox), designed last  | design §2.2           | later             |
 
 ## Data the UI has (contract summary)
 
