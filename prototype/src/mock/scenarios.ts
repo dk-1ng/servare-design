@@ -87,6 +87,11 @@ function runningJob(media: MediaItem, id: string, bytesWritten: number): Downloa
 }
 
 export function buildScenario(name: ScenarioName): Scenario {
+  // Fixtures are shared module objects; a scenario owns its copy so one client cannot change another's.
+  return structuredClone(build(name));
+}
+
+function build(name: ScenarioName): Scenario {
   switch (name) {
     case 'empty':
       return base([]);
@@ -94,7 +99,7 @@ export function buildScenario(name: ScenarioName): Scenario {
       return {
         ...base(manyItems()),
         lateTracks: { mediaId: sampleHls.id, tracks: lateTracks, afterMs: 2000 },
-        scan: { found: 2, blobOnly: false },
+        scan: { found: 0, blobOnly: false },
       };
     case 'live':
       return base([liveItem, directWithTitle]);

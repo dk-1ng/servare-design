@@ -64,7 +64,8 @@ export class MockClient implements Client {
         try {
           // Each handler is typed per request name; the lookup by a generic key cannot be.
           const handler = this.backend.handlers[name] as (p: RequestMap[K][0]) => RequestMap[K][1];
-          resolve(handler(payload));
+          // Data crosses a port in the real client, so components never share objects with the backend.
+          resolve(structuredClone(handler(payload)));
         } catch (error) {
           reject(
             error instanceof Error ? error : new MessagingError('handler-failed', String(error)),
@@ -100,7 +101,7 @@ export class MockClient implements Client {
     if (late && !this.tracksSent && this.elapsed >= late.afterMs) {
       this.tracksSent = true;
       const media = this.scenario.media.find((m) => m.id === late.mediaId);
-      if (media) media.audioTracks = late.tracks;
+      if (media) media.audioTracks = structuredClone(late.tracks);
       this.dispatch('tracks/updated', { mediaId: late.mediaId, audioTracks: late.tracks });
     }
     const outage = this.scenario.outage;
@@ -130,6 +131,6 @@ export class MockClient implements Client {
   private dispatch<K extends EventName>(name: K, payload: EventMap[K]): void {
     if (!this.connected) return;
     for (const handler of this.listeners.get(name) ?? [])
-      (handler as (p: EventMap[K]) => void)(payload);
+      (handler as (p: EventMap[K]) => void)(structuredClone(payload));
   }
 }

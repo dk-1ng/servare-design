@@ -1,6 +1,8 @@
 import { expect, test } from '@playwright/test';
+import { Backend } from '../prototype/src/mock/backend.ts';
 import { MockClient } from '../prototype/src/mock/client.ts';
-import { SCENARIO_NAMES } from '../prototype/src/mock/scenarios.ts';
+import { scenarioFromUrl } from '../prototype/src/mock/index.ts';
+import { SCENARIO_NAMES, buildScenario } from '../prototype/src/mock/scenarios.ts';
 import { TRANSITIONS, canTransition } from '../prototype/src/mock/transitions.ts';
 import {
   MessagingError,
@@ -282,5 +284,69 @@ test.describe('scenarios', () => {
     expect(seen).toEqual([]);
     c.advance(1500);
     expect(seen).toEqual(['m_7f3a']);
+  });
+});
+
+test.describe('isolation and consistency', () => {
+  test('late tracks of one client do not leak into the next one', async () => {
+    const first = client('many');
+    first.advance(3000);
+    const second = client('many');
+    const item = (await second.request('media/list', { tabId: 42 })).find((m) => m.id === 'm_7f3a');
+    expect(item?.audioTracks).toHaveLength(1);
+  });
+
+  test('results are copies: editing them does not change the backend', async () => {
+    const c = client('many');
+    const items = await c.request('media/list', { tabId: 42 });
+    items.length = 0;
+    expect(await c.request('media/list', { tabId: 42 })).not.toHaveLength(0);
+  });
+
+  test('progress never decreases in the disconnected scenario (§3.3)', () => {
+    const c = client('disconnected');
+    let last = 0;
+    c.on('job/updated', ({ job }) => {
+      if (typeof job.progress === 'number') {
+        expect(job.progress).toBeGreaterThanOrEqual(last);
+        last = job.progress;
+      }
+    });
+    for (let i = 0; i < 200; i++) c.advance(100);
+    expect(last).toBeGreaterThan(0.1);
+  });
+
+  test('a file of unknown size reports indeterminate progress and still finishes', async () => {
+    const c = client('many');
+    const job = await c.request('download/enqueue', { mediaId: 'm_bare' });
+    const seen: DownloadJob[] = [];
+    c.on('job/updated', ({ job: j }) => seen.push(j));
+    for (let i = 0; i < 200; i++) c.advance(100);
+    expect(job.progress).toBe('indeterminate');
+    expect(
+      seen.filter((j) => j.status === 'running').every((j) => j.progress === 'indeterminate'),
+    ).toBe(true);
+    expect(seen.at(-1)?.status).toBe('done');
+  });
+
+  test('the transition guard throws on a move outside §3.1', async () => {
+    const backend = new Backend(buildScenario('many'), () => undefined);
+    const job = await Promise.resolve(
+      backend.handlers['download/enqueue']({ mediaId: 'm_direct' }),
+    );
+    const live = backend.jobs.get(job.id);
+    if (!live) throw new Error('job missing');
+    backend.move(live, 'cancelled');
+    expect(() => {
+      backend.move(live, 'running');
+    }).toThrow(MessagingError);
+  });
+});
+
+test.describe('scenarioFromUrl', () => {
+  test('selects every scenario by name and falls back to many', () => {
+    for (const name of SCENARIO_NAMES) expect(scenarioFromUrl(`?scenario=${name}`)).toBe(name);
+    expect(scenarioFromUrl('?scenario=nope')).toBe('many');
+    expect(scenarioFromUrl('')).toBe('many');
   });
 });

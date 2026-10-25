@@ -44,7 +44,14 @@ export class Backend {
     this.history = [...scenario.history];
     this.bytesPerSecond = options.bytesPerSecond ?? 12_000_000;
     this.throttleMs = options.progressThrottleMs ?? 500;
-    for (const job of scenario.jobs) this.jobs.set(job.id, structuredClone(job));
+    for (const job of scenario.jobs) {
+      const seeded = structuredClone(job);
+      // Keep seeded progress consistent with the bytes written (§3.3: monotonic within a run).
+      if (seeded.status === 'running' && seeded.progress !== 'indeterminate') {
+        seeded.progress = Math.min(1, seeded.bytesWritten / this.totalBytes(seeded));
+      }
+      this.jobs.set(seeded.id, seeded);
+    }
   }
 
   get media(): readonly MediaItem[] {
@@ -103,7 +110,7 @@ export class Backend {
       subtitleIds: mode === 'audio' ? [] : subtitleIds,
       mode,
       status: 'queued',
-      progress: media.duration === 'live' ? 'indeterminate' : 0,
+      progress: media.duration === 'live' || media.duration === 0 ? 'indeterminate' : 0,
       bytesWritten: 0,
       outputName: outputName(media, mode, p.outputName),
     };
@@ -200,15 +207,17 @@ export class Backend {
       this.publishThrottled(job);
       return;
     }
-    job.progress = Math.min(1, job.bytesWritten / this.totalBytes(job));
+    const fraction = Math.min(1, job.bytesWritten / this.totalBytes(job));
+    // Unknown size (`duration: 0`): the bar stays indeterminate but the job still ends.
+    job.progress = this.isUnknownSize(job) ? 'indeterminate' : fraction;
     const failure = this.scenario.failure;
-    if (failure && job.progress >= failure.at && !this.failedMedia.has(job.mediaId)) {
+    if (failure && fraction >= failure.at && !this.failedMedia.has(job.mediaId)) {
       this.failedMedia.add(job.mediaId);
       this.move(job, 'failed', { error: failure.error });
       this.record(job);
       return;
     }
-    if (job.progress >= 1) {
+    if (fraction >= 1) {
       this.move(job, 'done');
       this.record(job);
     } else {
@@ -217,9 +226,12 @@ export class Backend {
   }
 
   /** The only place a status changes; it refuses anything outside contract §3.1. */
-  private move(job: DownloadJob, to: JobStatus, patch: Partial<DownloadJob> = {}): void {
+  move(job: DownloadJob, to: JobStatus, patch: Partial<DownloadJob> = {}): void {
     if (!canTransition(job.status, to)) {
-      throw new Error(`Transition ${job.status} → ${to} is not in contract §3.1`);
+      throw new MessagingError(
+        'handler-failed',
+        `Transition ${job.status} → ${to} is not in contract §3.1`,
+      );
     }
     job.status = to;
     delete job.waiting;
@@ -253,6 +265,10 @@ export class Backend {
       },
       ...this.history,
     ]);
+  }
+
+  private isUnknownSize(job: DownloadJob): boolean {
+    return this.scenario.media.find((m) => m.id === job.mediaId)?.duration === 0;
   }
 
   private isLive(job: DownloadJob): boolean {
