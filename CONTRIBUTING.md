@@ -30,4 +30,11 @@ This repository follows the conventions of [Servare](https://github.com/dk-1ng/s
 5. Open the PR with `Closes #N`, fill in the template and attach screenshots for visual changes.
 6. CI must pass. The maintainer approves before merge (squash).
 
+## Supply chain
+
+- Every `uses:` in `.github/workflows/` is pinned to a full 40-character commit SHA with the release in a comment (`uses: owner/action@<sha> # v1.2.3`). The repository setting "Require actions to be pinned to a full-length commit SHA" makes a tag reference fail the CI. Dependabot understands the format and updates the SHA and the comment together.
+- `actions/checkout` sets `persist-credentials: false`; workflows declare the minimum `permissions`.
+- Dependabot waits 7 days before proposing a new version (`cooldown`); security updates are not delayed.
+- The `Audit workflows` job (zizmor) must pass on every PR.
+
 Everything in the repository (code, comments, docs, issues, commits, PRs) is written in English.
