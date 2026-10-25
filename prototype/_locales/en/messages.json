@@ -1,0 +1,20 @@
+{
+  "app_name": {
+    "message": "Servare Design",
+    "description": "Name of the design prototype, shown as the page title and main heading."
+  },
+  "placeholder_body": {
+    "message": "Placeholder page. Prototype pages arrive in later milestones.",
+    "description": "Explains that this page is temporary and will be replaced by real prototype pages."
+  },
+  "placeholder_locale": {
+    "message": "Language: $LOCALE$",
+    "description": "Shows which language the page is currently displayed in.",
+    "placeholders": {
+      "locale": {
+        "content": "$1",
+        "example": "pt_BR"
+      }
+    }
+  }
+}
