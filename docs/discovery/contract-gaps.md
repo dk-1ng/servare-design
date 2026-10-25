@@ -34,6 +34,7 @@ The IDs are stable; the state inventory and later issues refer to them.
 | G14 | Job timestamps and queue order                | Nice to have    | P2       |
 | G15 | Download before the manifest is parsed        | Blocking design | P1       |
 | G16 | Behavior clarifications (live, stop, client)  | Nice to have    | P3       |
+| G17 | Retry lineage and removing a job              | Nice to have    | P2       |
 
 ## Entries
 
@@ -67,7 +68,7 @@ The IDs are stable; the state inventory and later issues refer to them.
 
 ### G4 — Whether a job is a live recording
 
-- **Found in:** #6 (`JOB-RUNNING-LIVE`, `JOB-PAUSED-LIVE`).
+- **Found in:** #6 (`JOB-RUNNING-LIVE`, `JOB-PAUSED-LIVE`); #8 (F5 Stop and keep after the tab navigated, F6 ending a live blocker).
 - **Use case:** offering "Stop and keep" next to "Cancel", and showing how long it has been recording, even after the tab navigated away. Confusing the two loses the recording.
 - **Missing:** a job does not say whether it is live; the UI must resolve `mediaId` in `media/list`, which fails once the tab navigates (§2.2).
 - **Proposal:** `DownloadJob.live?: boolean` and `DownloadJob.startedAt?: number` (ms since epoch, first transition to `running`). Preferred: take `live` from G11's snapshot and add only `startedAt` here, so servare does not add both flags.
@@ -135,7 +136,7 @@ The IDs are stable; the state inventory and later issues refer to them.
 
 ### G11 — Job title and picture after the tab navigated
 
-- **Found in:** #6 (`JOB-MEDIA-GONE`).
+- **Found in:** #6 (`JOB-MEDIA-GONE`); #8 (F1, F3: no page to reopen for `ERR-HTTP-AUTH` after navigation).
 - **Use case:** the queue lists jobs from every tab; most of them outlive their `MediaItem` (any navigation or tab close clears it). The user still needs a recognizable title, picture and source page.
 - **Missing:** a job has only `mediaId` and `outputName`.
 - **Proposal:** `DownloadJob.media?: { title: string, thumbnail?: string, pageUrl: string, kind: 'direct' | 'hls' | 'dash', live: boolean }`, a snapshot taken at enqueue. It also covers G4's `live`.
@@ -185,13 +186,24 @@ The IDs are stable; the state inventory and later issues refer to them.
 
 ### G16 — Behavior clarifications (live, stop, client)
 
-- **Found in:** #6 (§8 open questions).
+- **Found in:** #6 (§8 open questions); #8 (F1, D-F2: who applies `preferredLanguages`).
 - **Use case:** avoiding controls that the background will reject, and a dead end when the connection never returns.
 - **Missing and proposal (docs only):**
   - whether `mode: 'audio'` is allowed with `duration: 'live'` (decides if "Audio only" shows on `MEDIA-LIVE`);
   - what `download/stop` does on a non-live job (expected: `handler-failed`);
   - what `DownloadJob.progress` measures (bytes, HLS/DASH segments, or the temporary file when `mode: 'audio'`), which G9's size estimate depends on;
+  - who applies `Settings.preferredLanguages` (§4.4 "pre-selects matching audio and subtitle tracks"): the UI, or the background when `audioTrackIds`/`subtitleIds` are omitted. The flows (D-F2) assume the UI preselects and always sends the IDs it shows; the docs should say whether omitted IDs fall back to the preferred languages, so the two rules cannot diverge;
   - whether `PortClient` ever stops reconnecting; if it does, an `onGiveUp` hook so the UI can show "Could not reach Servare. Close and reopen this window."
 - **Compatibility:** docs only, plus an additive client hook.
-- **Fallback:** hide "Audio only" on live items; never offer Stop on non-live jobs; keep "Reconnecting" visible indefinitely.
+- **Fallback:** hide "Audio only" on live items; never offer Stop on non-live jobs; keep "Reconnecting" visible indefinitely; the UI preselects tracks from `settings/get` and sends them explicitly (none before M5).
 - **Marker:** nice to have. **Priority:** P3.
+
+### G17 — Retry lineage and removing a job
+
+- **Found in:** #8 (F3, D-F3).
+- **Use case:** after a retry, the user should see one card per video, not the failed one next to the new one. Removing the failed job with `download/remove` does that, but must not erase the record of the failed attempt.
+- **Missing:** §4.2 says the old job "stays as history until removed", and `HistoryEntry.status` includes `'failed'` (§4.3), so `download/remove` may also delete the failed `HistoryEntry`. The contract does not say. The same question applies when the user dismisses any terminal job. Without lineage, the UI also cannot tell after a reconnect which new job replaced which failed one.
+- **Proposal:** document in §4.2 that `download/remove` only removes the job from `download/list` and never touches history; optionally `DownloadJob.retryOf?: string` (the failed job's `id`) on jobs created by `download/retry`.
+- **Compatibility:** docs only, or optional field; compatible.
+- **Fallback:** until §4.2 confirms that `download/remove` leaves history alone, the UI never calls it on a retried job: the failed card stays in the queue, marked "Tried again" (a client-side label on the job whose retry returned a new job in this session). User-initiated dismissal stays available, since the user asked for it.
+- **Marker:** nice to have. **Priority:** P2.
