@@ -1,0 +1,16 @@
+# Dependencies and build
+node_modules/
+dist/
+web-ext-artifacts/
+
+# Tests
+playwright-report/
+test-results/
+test/screenshots/
+
+# Local environment
+.env*
+*.log
+.DS_Store
+.claude/settings.local.json
+CLAUDE.local.md

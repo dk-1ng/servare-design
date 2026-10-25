@@ -1,0 +1,17 @@
+name: Design feedback
+description: Something in the design or prototype is unclear, inaccessible or wrong
+title: 'fix: '
+labels: ['type: bug', 'status: triage']
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What is wrong
+      description: Page, state, theme and width; what you expected.
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why it matters
+      description: Who is affected (e.g. keyboard users, long translations, dark theme).

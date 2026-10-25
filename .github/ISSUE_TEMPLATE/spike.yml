@@ -1,0 +1,33 @@
+name: Spike
+description: Time-boxed question that ends in a recorded decision
+title: 'spike: '
+labels: ['type: spike', 'status: ready']
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+      description: The single question this spike answers.
+    validations:
+      required: true
+  - type: textarea
+    id: inputs
+    attributes:
+      label: Inputs
+      value: |
+        - `docs/brief.md`
+        -
+    validations:
+      required: true
+  - type: textarea
+    id: options
+    attributes:
+      label: Options to compare
+  - type: textarea
+    id: done
+    attributes:
+      label: Acceptance criteria
+      value: |
+        - [ ] Decision recorded in `docs/decisions/`
+    validations:
+      required: true

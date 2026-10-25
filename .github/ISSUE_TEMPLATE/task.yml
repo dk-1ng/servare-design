@@ -1,0 +1,35 @@
+name: Task
+description: Planned unit of work (maintainers)
+labels: ['status: ready']
+body:
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Why this task exists and where it sits in the design process.
+    validations:
+      required: true
+  - type: textarea
+    id: inputs
+    attributes:
+      label: Inputs
+      description: Exact files and sections to read. Agents read only these plus docs/brief.md.
+      value: |
+        - `docs/brief.md`
+        -
+    validations:
+      required: true
+  - type: textarea
+    id: tasks
+    attributes:
+      label: Tasks
+      value: |
+        - [ ]
+    validations:
+      required: true
+  - type: textarea
+    id: done
+    attributes:
+      label: Acceptance criteria
+    validations:
+      required: true
