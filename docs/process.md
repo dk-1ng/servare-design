@@ -24,6 +24,8 @@ Concepts are explained here once; issues, PRs and agents link to them.
 
 - **Contract-first design.** The interface is designed from the data and actions the system really provides (`references/ui-contract.md`), so nothing promised by the UI is impossible to build.
 - **Progressive disclosure.** Show the essentials first and reveal advanced detail on request, so beginners are not overwhelmed and experts are not limited.
+- **Persona.** A short, concrete portrait of a typical user (goals, frustrations, vocabulary, context of use) used to judge design choices: "would Marina understand this?". A proto-persona is built from known assumptions instead of research and is validated later. See `docs/discovery/persona.md`.
+- **Jobs-to-be-done.** Describing what people come to do as a situation, a motivation and an outcome: "When …, I want to …, so I can …". It keeps the design focused on the result the user wants, not on features, and lets tasks be ranked and measured.
 
 ## Tools
 
