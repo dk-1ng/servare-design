@@ -12,7 +12,7 @@ Read `CLAUDE.md` and the issue's acceptance criteria.
 ## Checks
 
 1. `pnpm check` passes.
-2. Screenshots of the pages and states the issue names, light and dark, at popup width (380px) and options width (1024px), saved to `test/screenshots/<issue>/` (gitignored). Attach only the ones the PR needs.
+2. Screenshots of the pages and states the issue names, light and dark, at popup width (380px) and options width (1024px), saved to `test/screenshots/<issue>/` (gitignored; run `SCREENS_DIR=<issue> pnpm test:screens`). Attach only the ones the PR needs.
 3. axe scan (`@axe-core/playwright`), WCAG 2.2 A/AA rules: zero serious or critical violations.
 4. Keyboard: every action reachable with Tab/Shift+Tab/Enter/Space/Escape, focus always visible, logical order.
 5. Network: no request leaves `localhost`/`file:`.

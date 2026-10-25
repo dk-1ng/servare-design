@@ -1,7 +1,7 @@
 import type { Page } from '@playwright/test';
 
 export type Theme = 'light' | 'dark';
-export type Locale = 'en' | 'pt-BR' | 'pseudo';
+export type Locale = 'en' | 'pt_BR' | 'pseudo';
 /** Popup/sidebar width and options/history width. */
 export type Width = 380 | 1024;
 

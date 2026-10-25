@@ -1,21 +1,23 @@
-import { expect, test } from '@playwright/test';
 import { openPage } from './support/page.ts';
-import { trackRemoteRequests } from './support/network.ts';
+import { expect, test } from './support/fixtures.ts';
 
-test('page makes no request outside localhost', async ({ page }) => {
-  const remote = trackRemoteRequests(page);
+// The guard itself is an automatic fixture (support/fixtures.ts) that runs in every spec.
+test('page makes no request outside localhost', async ({ page, remoteRequests }) => {
   await openPage(page, '/index.html');
-  expect(remote).toEqual([]);
+  expect(remoteRequests).toEqual([]);
 });
 
-test('the guard catches an injected remote image', async ({ page }) => {
-  const remote = trackRemoteRequests(page);
-  await page.route('https://example.invalid/**', (route) => route.abort());
-  await openPage(page, '/index.html');
-  await page.evaluate(() => {
-    const img = document.createElement('img');
-    img.src = 'https://example.invalid/pixel.png';
-    document.body.append(img);
+test.describe('guard canary', () => {
+  test.use({ allowRemote: true });
+
+  test('the guard catches an injected remote image', async ({ page, remoteRequests }) => {
+    await page.route('https://example.invalid/**', (route) => route.abort());
+    await openPage(page, '/index.html');
+    await page.evaluate(() => {
+      const img = document.createElement('img');
+      img.src = 'https://example.invalid/pixel.png';
+      document.body.append(img);
+    });
+    await expect.poll(() => remoteRequests.length).toBeGreaterThan(0);
   });
-  await expect.poll(() => remote.length).toBeGreaterThan(0);
 });

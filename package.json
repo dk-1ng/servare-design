@@ -17,7 +17,7 @@
     "format": "prettier --write .",
     "test": "playwright test",
     "check": "pnpm lint && pnpm typecheck && pnpm build && pnpm test",
-    "test:screens": "SCREENS=1 playwright test screens"
+    "test:screens": "node scripts/screens.ts"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.14.0",

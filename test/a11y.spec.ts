@@ -1,5 +1,5 @@
 import AxeBuilder from '@axe-core/playwright';
-import { expect, test } from '@playwright/test';
+import { expect, test } from './support/fixtures.ts';
 import { openPage, type Theme, type Width } from './support/page.ts';
 
 const themes: Theme[] = ['light', 'dark'];

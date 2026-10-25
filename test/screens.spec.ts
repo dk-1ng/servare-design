@@ -1,4 +1,4 @@
-import { test } from '@playwright/test';
+import { test } from './support/fixtures.ts';
 import { openPage, type Theme, type Width } from './support/page.ts';
 
 // Run with `pnpm test:screens`; skipped in the regular suite.
@@ -12,7 +12,7 @@ for (const theme of themes) {
     test(`placeholder ${theme} ${String(width)}`, async ({ page }, info) => {
       await openPage(page, '/index.html', { theme, width });
       await page.screenshot({
-        path: `test/screenshots/${info.project.name}/placeholder-${theme}-${String(width)}.png`,
+        path: `test/screenshots/${process.env['SCREENS_DIR'] ?? 'local'}/${info.project.name}/placeholder-${theme}-${String(width)}.png`,
         fullPage: true,
       });
     });
