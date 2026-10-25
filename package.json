@@ -16,7 +16,8 @@
     "lint": "eslint . && prettier --check .",
     "format": "prettier --write .",
     "test": "playwright test",
-    "check": "pnpm lint && pnpm typecheck && pnpm build && pnpm test",
+    "check:i18n": "node scripts/check-i18n.ts",
+    "check": "pnpm lint && pnpm check:i18n && pnpm typecheck && pnpm build && pnpm test",
     "test:screens": "node scripts/screens.ts"
   },
   "devDependencies": {
