@@ -175,15 +175,22 @@ Request failures are `MessagingError`s and are **not** job failures (those are �
 
 ## 6. Gaps found
 
-Recorded in [`contract-gaps.md`](contract-gaps.md) (G4–G8). Each state above that depends on them uses the listed fallback until the contract changes.
+Recorded in [`contract-gaps.md`](contract-gaps.md). Each state above that depends on them uses the listed fallback until the contract changes.
 
 | Gap | Affects                                                                                              |
 | --- | ---------------------------------------------------------------------------------------------------- |
+| G1  | `JOB-DONE` (open or show the file)                                                                   |
 | G4  | `JOB-RUNNING-LIVE`, `JOB-PAUSED-LIVE` with `JOB-MEDIA-GONE`                                          |
 | G5  | `ERR-UNKNOWN-PRIVATE-RESTART`, `ERR-UNKNOWN-HOST-TAB`, `NET-HANDLER-FAILED` (untranslated `message`) |
 | G6  | `JOB-PAUSED` (user pause vs host tab closed)                                                         |
 | G7  | `JOB-FAILED` (is anything left on disk?)                                                             |
 | G8  | `PAGE-EMPTY` (why nothing was found)                                                                 |
+| G9  | `MEDIA-DIRECT`, `JOB-RUNNING-DETERMINATE` (size)                                                     |
+| G10 | `MEDIA-VARIANTS`, `MEDIA-VARIANT-UNLABELED` (size per quality)                                       |
+| G11 | `JOB-MEDIA-GONE`                                                                                     |
+| G14 | `PAGE-QUEUE` (order, timestamps)                                                                     |
+| G15 | `MEDIA-VARIANTS-PENDING`                                                                             |
+| G16 | §8 open questions                                                                                    |
 
 ## 7. Coverage check
 
@@ -219,7 +226,7 @@ Every action in §2 and §3 is a §3.1 trigger: `download/enqueue` (new → `que
 
 ## 8. Open questions
 
-- Can a live job be extracted as MP3 (`mode: 'audio'` with `duration: 'live'`)? The contract neither allows nor forbids it.
-- Does `PortClient` ever give up reconnecting? If so, `NET-RECONNECTING` needs a terminal "could not reconnect" state; the contract only says "with backoff".
-- What does `download/stop` do on a job that is not live? The UI never offers it there, but `JOB-MEDIA-GONE` can hide whether a job is live (G4).
-- Can an HLS/DASH item be downloaded at the default quality before its manifest is parsed (`MEDIA-VARIANTS-PENDING`)? The contract defines a missing `variantId` as default only for direct files and audio-only.
+- Can a live job be extracted as MP3 (`mode: 'audio'` with `duration: 'live'`)? The contract neither allows nor forbids it (G16).
+- Does `PortClient` ever give up reconnecting? If so, `NET-RECONNECTING` needs a terminal "could not reconnect" state; the contract only says "with backoff" (G16).
+- What does `download/stop` do on a job that is not live? The UI never offers it there, but `JOB-MEDIA-GONE` can hide whether a job is live (G4, G16).
+- Can an HLS/DASH item be downloaded at the default quality before its manifest is parsed (`MEDIA-VARIANTS-PENDING`)? The contract defines a missing `variantId` as default only for direct files and audio-only (G15).
