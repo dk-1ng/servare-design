@@ -23,7 +23,12 @@ if (process.argv.includes('--serve')) {
   const ctx = await esbuild.context(options);
   await ctx.watch();
   // Bound to loopback only: nothing leaves the machine.
-  const { hosts, port } = await ctx.serve({ servedir: join(root, 'prototype'), host: '127.0.0.1' });
+  const portArg = process.argv.find((arg) => arg.startsWith('--port='));
+  const { hosts, port } = await ctx.serve({
+    servedir: join(root, 'prototype'),
+    host: '127.0.0.1',
+    ...(portArg ? { port: Number(portArg.slice('--port='.length)) } : {}),
+  });
   console.info(`Serving prototype at http://${hosts[0] ?? '127.0.0.1'}:${String(port)}/`);
 } else {
   await esbuild.build(options);
