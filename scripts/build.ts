@@ -1,11 +1,15 @@
-// Bundles every prototype/src/pages/*.ts entry point into prototype/dist/.
+// Bundles every top-level prototype/src/pages/*.ts entry point into prototype/dist/
+// (nested folders are not entry points). The output folder is emptied first so renamed
+// or deleted pages never leave stale bundles behind.
 // With --serve it also serves prototype/ on localhost and rebuilds on change.
-import { readdirSync } from 'node:fs';
+import { readdirSync, rmSync } from 'node:fs';
 import { join } from 'node:path';
 import * as esbuild from 'esbuild';
 
 const root = join(import.meta.dirname, '..');
 const pagesDir = join(root, 'prototype/src/pages');
+
+rmSync(join(root, 'prototype/dist'), { recursive: true, force: true });
 
 const options: esbuild.BuildOptions = {
   entryPoints: readdirSync(pagesDir)
