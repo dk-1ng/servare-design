@@ -25,8 +25,8 @@ UI/UX design for Servare (Firefox/Chromium MV3 media download extension, `dk-1ng
 Everything lives on GitHub `dk-1ng/servare-design`: issues, milestones `D0`…`D10` and the "Servare Design" project.
 Labels: `type: *`, `ui: *`, `area: contract`, `complexity: high`, `needs: user input`, `status: ready | in progress | awaiting approval | blocked | triage`.
 
-Project: https://github.com/users/dk-1ng/projects/PROJECT_NUMBER · ID `PROJECT_ID`
-Status field `STATUS_FIELD_ID` · options: Todo `OPT_TODO` · In Progress `OPT_IN_PROGRESS` · Awaiting Approval `OPT_AWAITING` · Done `OPT_DONE`
+Project: https://github.com/users/dk-1ng/projects/5 · ID `PVT_kwHOE9rcGM4BosX0`
+Status field `PVTSSF_lAHOE9rcGM4BosX0zhnLQDU` · options: Todo `99009eb3` · In Progress `b2272c5b` · Awaiting Approval `e9c427a7` · Done `f3aac9a7`
 
 ## Model routing
 

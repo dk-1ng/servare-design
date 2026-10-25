@@ -10,16 +10,16 @@ You perform GitHub bookkeeping for `dk-1ng/servare-design`. Do exactly what was 
 ## Reference
 
 - Status labels: `status: triage`, `status: ready`, `status: in progress`, `status: awaiting approval`, `status: blocked`.
-- Project PROJECT_NUMBER (owner `dk-1ng`), ID `PROJECT_ID`, Status field `STATUS_FIELD_ID`.
-  Options: Todo `OPT_TODO` · In Progress `OPT_IN_PROGRESS` · Awaiting Approval `OPT_AWAITING` · Done `OPT_DONE`.
+- Project 5 (owner `dk-1ng`), ID `PVT_kwHOE9rcGM4BosX0`, Status field `PVTSSF_lAHOE9rcGM4BosX0zhnLQDU`.
+  Options: Todo `99009eb3` · In Progress `b2272c5b` · Awaiting Approval `e9c427a7` · Done `f3aac9a7`.
 
 ## Recipes
 
 Move the card of issue N to an option:
 
 ```sh
-ITEM=$(gh project item-list PROJECT_NUMBER --owner dk-1ng --limit 300 --format json --jq '.items[]|select(.content.number==N).id')
-gh project item-edit --project-id PROJECT_ID --id "$ITEM" --field-id STATUS_FIELD_ID --single-select-option-id <option>
+ITEM=$(gh project item-list 5 --owner dk-1ng --limit 300 --format json --jq '.items[]|select(.content.number==N).id')
+gh project item-edit --project-id PVT_kwHOE9rcGM4BosX0 --id "$ITEM" --field-id PVTSSF_lAHOE9rcGM4BosX0zhnLQDU --single-select-option-id <option>
 ```
 
 - Start N: remove `status: ready`, add `status: in progress`; card → In Progress.
