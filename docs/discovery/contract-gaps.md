@@ -71,7 +71,7 @@ The IDs are stable; the state inventory and later issues refer to them.
 
 ### G4 — Whether a job is a live recording
 
-- **Found in:** #6 (`JOB-RUNNING-LIVE`, `JOB-PAUSED-LIVE`); #8 (F5 Stop and keep after the tab navigated, F6 ending a live blocker).
+- **Found in:** #6 (`JOB-RUNNING-LIVE`, `JOB-PAUSED-LIVE`); #8 (F5 Stop and keep after the tab navigated, F6 ending a live blocker); #9 (Stop on Downloads view cards, ADR 0005).
 - **Use case:** offering "Stop and keep" next to "Cancel", and showing how long it has been recording, even after the tab navigated away. Confusing the two loses the recording.
 - **Missing:** a job does not say whether it is live; the UI must resolve `mediaId` in `media/list`, which fails once the tab navigates (§2.2).
 - **Proposal:** `DownloadJob.live?: boolean` and `DownloadJob.startedAt?: number` (ms since epoch, first transition to `running`). Preferred: take `live` from G11's snapshot and add only `startedAt` here, so servare does not add both flags.
@@ -139,7 +139,7 @@ The IDs are stable; the state inventory and later issues refer to them.
 
 ### G11 — Job title and picture after the tab navigated
 
-- **Found in:** #6 (`JOB-MEDIA-GONE`); #8 (F1, F3: no page to reopen for `ERR-HTTP-AUTH` after navigation).
+- **Found in:** #6 (`JOB-MEDIA-GONE`); #8 (F1, F3: no page to reopen for `ERR-HTTP-AUTH` after navigation); #9 (job cards in the popup's Downloads view, ADR 0005).
 - **Use case:** the queue lists jobs from every tab; most of them outlive their `MediaItem` (any navigation or tab close clears it). The user still needs a recognizable title, picture and source page.
 - **Missing:** a job has only `mediaId` and `outputName`.
 - **Proposal:** `DownloadJob.media?: { title: string, thumbnail?: string, pageUrl: string, kind: 'direct' | 'hls' | 'dash', live: boolean }`, a snapshot taken at enqueue. It also covers G4's `live`.
@@ -169,7 +169,7 @@ The IDs are stable; the state inventory and later issues refer to them.
 
 ### G14 — Job timestamps and queue order
 
-- **Found in:** #6 (`PAGE-QUEUE`).
+- **Found in:** #6 (`PAGE-QUEUE`); #9 (order inside the Downloads view groups, ADR 0005).
 - **Use case:** ordering the queue predictably (active first, then most recently finished) and saying "finished 5 min ago".
 - **Missing:** `download/list` order is not documented, and jobs have no timestamps.
 - **Proposal:** `DownloadJob.createdAt?: number` and `DownloadJob.endedAt?: number` (set on a terminal status); document `download/list` order as oldest first, like `media/list`.
