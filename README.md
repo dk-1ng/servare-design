@@ -27,7 +27,7 @@ This repository holds the design work: research, flows, decisions, a framework-f
 
 ## How this project is built
 
-This project is directed by its maintainer and executed with AI coding agents (Claude Code). The workflow is versioned with the code: [`CLAUDE.md`](CLAUDE.md) holds the rules and the per-issue loop, and [`.claude/agents/`](.claude/agents/) defines the specialized agents. Every change goes through an issue, a branch, an automated review and a pull request, and is merged only after the maintainer reviews and approves it.
+This project is directed by its maintainer and executed with AI coding agents (Claude Code). The workflow is versioned with the code: [`CLAUDE.md`](CLAUDE.md) holds the rules and the per-issue loop, and [`.claude/agents/`](.claude/agents/) defines the specialized agents. Every change goes through an issue, a branch, an automated review and a pull request, and is merged only after the maintainer reviews and approves it. Commits carry an `Assisted-by: Claude Code` trailer.
 
 ## Run the prototype
 

@@ -16,7 +16,7 @@ Read `CLAUDE.md`, `docs/brief.md`, the issue (`gh issue view <n> -R dk-1ng/serva
 3. When comparing options, give 2–3 alternatives with trade-offs and a recommendation. Lo-fi HTML probes go in `prototype/wireframes/` and are labeled as throwaway.
 4. Record the decision as `docs/decisions/NNNN-title.md` (template in that folder): context, decision, alternatives rejected, consequences.
 5. Diagrams are Mermaid inside Markdown.
-6. Commit with Conventional Commits in English, without AI attribution lines. Do not push, open PRs or edit labels.
+6. Commit with Conventional Commits in English, ending with the trailer `Assisted-by: Claude Code` after a blank line (never `Co-Authored-By` or "Generated with …"). Do not push, open PRs or edit labels.
 
 ## Final report
 

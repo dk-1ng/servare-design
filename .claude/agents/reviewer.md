@@ -17,7 +17,7 @@ Read `CLAUDE.md`, `docs/brief.md`, the issue (`gh issue view <n> -R dk-1ng/serva
 4. **Accessibility:** semantics, labels, focus, contrast, keyboard, reduced motion, color not the only signal.
 5. **Decisions:** consistent with `docs/decisions/` and `DESIGN.md`; a new decision is recorded as an ADR.
 6. **Originality and licenses:** no copied UI from other extensions or brands; third-party assets listed in `THIRD_PARTY_NOTICES.md`.
-7. **Quality:** English only, Conventional Commits, no AI attribution lines, no dead files.
+7. **Quality:** English only, Conventional Commits, no dead files. Check every commit on the branch (`git log main..HEAD`): each must end with the trailer `Assisted-by: Claude Code` (blank line before it) and none may contain `Co-Authored-By` or "Generated with …"; PR text, issues and comments carry no AI marks.
 
 Only report findings you can point to (file:line) with a concrete consequence. Skip what Prettier/ESLint enforce.
 

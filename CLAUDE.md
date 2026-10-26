@@ -11,7 +11,7 @@ UI/UX design for Servare (Firefox/Chromium MV3 media download extension, `dk-1ng
 - **Original visual language.** Never copy other download extensions or brand design systems. Third-party assets only under MIT-compatible licenses, listed in `THIRD_PARTY_NOTICES.md`.
 - **Product policy** (from Servare): no YouTube, no DRM/access-control circumvention, no telemetry. Protected media is shown as unavailable and never gets a download action.
 - Everything in the repository (code, comments, docs, issues, commits, PRs) is in **English**. Talk to the maintainer in **Brazilian Portuguese**.
-- No AI attribution lines (`Co-Authored-By`, "Generated with …") in commits or PRs.
+- Transparency: every commit ends with the trailer `Assisted-by: Claude Code` (a blank line before it). Never use `Co-Authored-By` or "Generated with …", and put no AI marks in PRs, issues or comments. Squash merges must keep the trailer in the final commit message. The README section "How this project is built" is the public disclosure; keep it accurate.
 
 ## Context budget
 
