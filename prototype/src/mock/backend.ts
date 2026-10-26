@@ -11,6 +11,8 @@ import {
   type MediaItem,
   type RequestMap,
   type RequestName,
+  type RulesDocument,
+  type Settings,
 } from './types.ts';
 
 type Emit = <K extends EventName>(name: K, payload: EventMap[K]) => void;
@@ -35,6 +37,8 @@ export class Backend {
   private readonly lastEmit = new Map<string, number>();
   private readonly failedMedia = new Set<string>();
   private history: HistoryEntry[];
+  private settings: Settings;
+  private rules: RulesDocument;
   private nextJob = 1;
   private clock = 0;
 
@@ -42,6 +46,8 @@ export class Backend {
     this.scenario = scenario;
     this.emit = emit;
     this.history = [...scenario.history];
+    this.settings = structuredClone(scenario.settings);
+    this.rules = structuredClone(scenario.rules);
     this.bytesPerSecond = options.bytesPerSecond ?? 12_000_000;
     this.throttleMs = options.progressThrottleMs ?? 500;
     for (const job of scenario.jobs) {
@@ -74,6 +80,22 @@ export class Backend {
     'history/remove': ({ entryId }) =>
       this.setHistory(this.history.filter((e) => e.id !== entryId)),
     'history/clear': () => this.setHistory([]),
+    'rules/get': () => structuredClone(this.rules),
+    'rules/set': ({ domain, rule }) => {
+      this.rules.domains[domain] = structuredClone(rule);
+      return null;
+    },
+    'rules/remove': ({ domain }) => {
+      this.rules.domains = Object.fromEntries(
+        Object.entries(this.rules.domains).filter(([name]) => name !== domain),
+      );
+      return null;
+    },
+    'settings/get': () => structuredClone(this.settings),
+    'settings/set': (patch) => {
+      this.settings = { ...this.settings, ...structuredClone(patch) };
+      return structuredClone(this.settings);
+    },
   };
 
   /** Advances simulated time and runs the job lifecycle. */

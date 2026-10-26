@@ -84,6 +84,39 @@ export interface HistoryEntry {
   status: 'done' | 'failed';
 }
 
+export type SpeedProfile = 'economy' | 'standard' | 'fast';
+
+/** Contract §4.4. */
+export interface Settings {
+  nameTemplate: string;
+  subfolder: string;
+  saveAs: boolean;
+  speedProfile: SpeedProfile;
+  /** LAME VBR 0-9, 0 best. */
+  mp3Quality: number;
+  /** 0-1. */
+  failureThreshold: number;
+  /** BCP 47. */
+  preferredLanguages: string[];
+}
+
+/** Contract §4.4: every key is optional and falls back to the default. */
+export interface DomainRule {
+  detection?: boolean;
+  /** Bytes. */
+  minDirectSize?: number;
+  propagateQuery?: boolean;
+  audioOnly?: boolean;
+  feedMode?: boolean;
+  hideFragments?: boolean;
+  speedProfile?: SpeedProfile;
+}
+
+export interface RulesDocument {
+  version: 1;
+  domains: Record<string, DomainRule>;
+}
+
 export type MessagingErrorCode =
   | 'invalid-message'
   | 'unknown-request'
@@ -127,6 +160,11 @@ export interface RequestMap {
   'history/list': [{ limit?: number }, HistoryEntry[]];
   'history/remove': [{ entryId: string }, null];
   'history/clear': [Record<string, never>, null];
+  'rules/get': [Record<string, never>, RulesDocument];
+  'rules/set': [{ domain: string; rule: DomainRule }, null];
+  'rules/remove': [{ domain: string }, null];
+  'settings/get': [Record<string, never>, Settings];
+  'settings/set': [Partial<Settings>, Settings];
 }
 
 export type RequestName = keyof RequestMap;

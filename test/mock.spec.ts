@@ -250,6 +250,7 @@ test.describe('scenarios', () => {
     const c = client('not-available');
     expect(await code(c.request('media/scan', { tabId: 42 }))).toBe('unknown-request');
     expect(await code(c.request('history/list', {}))).toBe('unknown-request');
+    expect(await code(c.request('settings/get', {}))).toBe('unknown-request');
     expect(await code(c.request('download/retry', { jobId: 'x' }))).toBe('unknown-request');
     expect(await code(c.request('media/list', { tabId: 42 }))).toBe('ok');
     expect(await code(c.request('download/list', {}))).toBe('ok');
@@ -258,7 +259,7 @@ test.describe('scenarios', () => {
   test('an unknown request name rejects with unknown-request', async () => {
     const c = client('many');
     const loose = c as unknown as { request(name: string, payload: object): Promise<unknown> };
-    expect(await code(loose.request('rules/get', {}))).toBe('unknown-request');
+    expect(await code(loose.request('rules/list', {}))).toBe('unknown-request');
   });
 
   test('disconnected: requests fail, events are lost, reconnect fires the hook', async () => {

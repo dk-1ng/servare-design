@@ -4,6 +4,8 @@ import type {
   HistoryEntry,
   MediaItem,
   RequestName,
+  RulesDocument,
+  Settings,
   Track,
 } from './types.ts';
 import {
@@ -12,6 +14,8 @@ import {
   dashItem,
   lateTracks,
   liveItem,
+  sampleRules,
+  sampleSettings,
   manyItems,
   protectedItem,
   sampleHistory,
@@ -37,6 +41,8 @@ export interface Scenario {
   media: MediaItem[];
   jobs: DownloadJob[];
   history: HistoryEntry[];
+  settings: Settings;
+  rules: RulesDocument;
   /** Jobs fail once per media at this progress (0–1); a retry then succeeds. */
   failure?: { at: number; error: DownloadError };
   /** A queued job waits while a live job runs (contract §3.2). */
@@ -60,6 +66,11 @@ const PLANNED: RequestName[] = [
   'history/list',
   'history/remove',
   'history/clear',
+  'rules/get',
+  'rules/set',
+  'rules/remove',
+  'settings/get',
+  'settings/set',
 ];
 
 function base(media: MediaItem[]): Scenario {
@@ -67,6 +78,8 @@ function base(media: MediaItem[]): Scenario {
     media,
     jobs: [],
     history: sampleHistory(),
+    settings: sampleSettings(),
+    rules: sampleRules(),
     unavailable: new Set(),
     scan: { found: 0, blobOnly: true },
   };
