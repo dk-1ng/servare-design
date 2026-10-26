@@ -526,5 +526,715 @@
         "example": "Jornal da noite (ao vivo)"
       }
     }
+  },
+  "opt_title": {
+    "message": "Configurações",
+    "description": "Main heading of the options page."
+  },
+  "opt_nav_label": {
+    "message": "Seções das configurações",
+    "description": "Accessible name of the options page navigation."
+  },
+  "opt_nav_history": {
+    "message": "Histórico",
+    "description": "Navigation link from the options page to the History page."
+  },
+  "opt_sec_files": {
+    "message": "Salvando arquivos",
+    "description": "Heading of the section with folder and file name settings."
+  },
+  "opt_sec_languages": {
+    "message": "Idiomas",
+    "description": "Heading of the preferred languages section."
+  },
+  "opt_sec_speed": {
+    "message": "Velocidade dos downloads",
+    "description": "Heading of the download speed section."
+  },
+  "opt_sec_mp3": {
+    "message": "Só o áudio (MP3)",
+    "description": "Heading of the MP3 quality section."
+  },
+  "opt_sec_rules": {
+    "message": "Regras por site",
+    "description": "Heading of the per-site rules section."
+  },
+  "opt_sec_advanced": {
+    "message": "Avançado",
+    "description": "Heading of the advanced settings section."
+  },
+  "opt_saved": {
+    "message": "Salvo",
+    "description": "Polite status message announced after a setting is saved."
+  },
+  "opt_restore": {
+    "message": "Restaurar padrões",
+    "description": "Button that puts one section back to its default values."
+  },
+  "opt_subfolder_label": {
+    "message": "Pasta dentro da sua pasta de downloads",
+    "description": "Label of the subfolder field."
+  },
+  "opt_subfolder_help": {
+    "message": "Criamos a pasta se for preciso. Deixe vazio para salvar direto na sua pasta de downloads.",
+    "description": "Help text under the subfolder field."
+  },
+  "opt_saveas_label": {
+    "message": "Perguntar onde salvar cada arquivo",
+    "description": "Label of the checkbox that asks for a location on every save."
+  },
+  "opt_name_label": {
+    "message": "Nome do arquivo",
+    "description": "Label of the file name template field."
+  },
+  "opt_name_help": {
+    "message": "Monte o nome com as peças abaixo ou digite o seu.",
+    "description": "Help text under the file name field."
+  },
+  "opt_name_pieces": {
+    "message": "Adicionar ao nome",
+    "description": "Accessible name of the group of buttons that insert a piece into the file name."
+  },
+  "opt_var_title": {
+    "message": "Título",
+    "description": "Button that inserts the video title into the file name."
+  },
+  "opt_var_host": {
+    "message": "Site",
+    "description": "Button that inserts the site name into the file name."
+  },
+  "opt_var_date": {
+    "message": "Data",
+    "description": "Button that inserts the date into the file name."
+  },
+  "opt_var_quality": {
+    "message": "Qualidade",
+    "description": "Button that inserts the video quality into the file name."
+  },
+  "opt_var_lang": {
+    "message": "Idioma",
+    "description": "Button that inserts the audio language into the file name."
+  },
+  "opt_var_add": {
+    "message": "Adicionar $PIECE$",
+    "description": "Accessible name of a file name piece button.",
+    "placeholders": {
+      "piece": {
+        "content": "$1",
+        "example": "x"
+      }
+    }
+  },
+  "opt_name_example": {
+    "message": "Exemplo: $NAME$",
+    "description": "Live example of the file name the template produces.",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "x"
+      }
+    }
+  },
+  "opt_name_counter": {
+    "message": "$COUNT$ de 180 caracteres",
+    "description": "Character counter of the file name field.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "x"
+      }
+    }
+  },
+  "opt_name_too_long": {
+    "message": "Ficou longo demais: use no máximo 180 caracteres. Sua alteração não foi salva.",
+    "description": "Inline error when the file name template exceeds the limit."
+  },
+  "opt_lang_label": {
+    "message": "Idiomas preferidos",
+    "description": "Label of the preferred languages list."
+  },
+  "opt_lang_help": {
+    "message": "Os idiomas mais acima na lista são escolhidos primeiro quando o vídeo oferece vários.",
+    "description": "Help text under the preferred languages list."
+  },
+  "opt_lang_empty": {
+    "message": "Nenhum idioma preferido ainda.",
+    "description": "Message shown when the preferred languages list is empty."
+  },
+  "opt_lang_browser": {
+    "message": "Usar os idiomas do meu navegador",
+    "description": "Button that fills the list from the browser languages."
+  },
+  "opt_lang_add_label": {
+    "message": "Adicionar um idioma",
+    "description": "Label of the language picker."
+  },
+  "opt_lang_add": {
+    "message": "Adicionar",
+    "description": "Button that adds the chosen language to the list."
+  },
+  "opt_lang_up": {
+    "message": "Subir $NAME$",
+    "description": "Accessible name of the move up button of a language.",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "x"
+      }
+    }
+  },
+  "opt_lang_down": {
+    "message": "Descer $NAME$",
+    "description": "Accessible name of the move down button of a language.",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "x"
+      }
+    }
+  },
+  "opt_lang_remove": {
+    "message": "Remover $NAME$",
+    "description": "Accessible name of the remove button of a language.",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "x"
+      }
+    }
+  },
+  "opt_speed_help": {
+    "message": "Uma regra de um site pode mudar isso.",
+    "description": "Help text under the speed options."
+  },
+  "opt_speed_economy": {
+    "message": "Econômica",
+    "description": "Name of the gentlest speed option."
+  },
+  "opt_speed_economy_desc": {
+    "message": "Mais leve para o site e para a sua conexão",
+    "description": "One-line effect of the economy speed option."
+  },
+  "opt_speed_standard": {
+    "message": "Padrão",
+    "description": "Name of the default speed option."
+  },
+  "opt_speed_standard_desc": {
+    "message": "Um bom equilíbrio para a maioria dos vídeos",
+    "description": "One-line effect of the standard speed option."
+  },
+  "opt_speed_fast": {
+    "message": "Rápida",
+    "description": "Name of the fastest speed option."
+  },
+  "opt_speed_fast_desc": {
+    "message": "Usa mais da sua conexão para terminar antes",
+    "description": "One-line effect of the fast speed option."
+  },
+  "opt_mp3_help": {
+    "message": "Quanto detalhe manter quando você salva só o áudio.",
+    "description": "Help text under the MP3 quality options."
+  },
+  "opt_mp3_best": {
+    "message": "Melhor som",
+    "description": "Name of the best MP3 quality preset."
+  },
+  "opt_mp3_best_desc": {
+    "message": "Arquivos maiores",
+    "description": "Effect of the best MP3 preset."
+  },
+  "opt_mp3_high": {
+    "message": "Alta",
+    "description": "Name of the default MP3 quality preset."
+  },
+  "opt_mp3_high_desc": {
+    "message": "Recomendada",
+    "description": "Effect of the high MP3 preset."
+  },
+  "opt_mp3_small": {
+    "message": "Arquivos menores",
+    "description": "Name of the smallest MP3 preset."
+  },
+  "opt_mp3_small_desc": {
+    "message": "Bom para vozes",
+    "description": "Effect of the smaller files MP3 preset."
+  },
+  "opt_mp3_custom": {
+    "message": "Personalizada (nível $LEVEL$)",
+    "description": "MP3 option shown when the stored level is not one of the presets.",
+    "placeholders": {
+      "level": {
+        "content": "$1",
+        "example": "x"
+      }
+    }
+  },
+  "opt_adv_summary": {
+    "message": "Configurações avançadas",
+    "description": "Summary of the disclosure that holds the advanced settings."
+  },
+  "opt_adv_mp3_label": {
+    "message": "Qualidade exata do áudio",
+    "description": "Label of the MP3 quality slider."
+  },
+  "opt_adv_mp3_smallest": {
+    "message": "Menor arquivo",
+    "description": "Label at the small end of the MP3 slider."
+  },
+  "opt_adv_mp3_value": {
+    "message": "Nível $LEVEL$",
+    "description": "Current value of the MP3 slider.",
+    "placeholders": {
+      "level": {
+        "content": "$1",
+        "example": "x"
+      }
+    }
+  },
+  "opt_fail_label": {
+    "message": "Parar um download quando mais desta parcela das partes falhar",
+    "description": "Label of the failure threshold field."
+  },
+  "opt_fail_unit": {
+    "message": "% (por cento)",
+    "description": "Unit of the failure threshold field."
+  },
+  "opt_fail_help": {
+    "message": "0 para na primeira parte que falhar. 100 nunca para por causa de partes que falharam.",
+    "description": "Help text under the failure threshold field."
+  },
+  "opt_fail_error": {
+    "message": "Digite um número inteiro de 0 a 100. Sua alteração não foi salva.",
+    "description": "Inline error for the failure threshold field."
+  },
+  "opt_rules_intro": {
+    "message": "Uma regra muda como o Servare funciona em um site. O resto segue as suas configurações gerais.",
+    "description": "Intro of the site rules section."
+  },
+  "opt_rules_empty": {
+    "message": "Nenhuma regra por site ainda. As suas configurações gerais valem em todo lugar.",
+    "description": "Empty state of the site rules list."
+  },
+  "opt_rules_add": {
+    "message": "Adicionar um site",
+    "description": "Button that opens the rule editor for a new site."
+  },
+  "opt_rules_filter": {
+    "message": "Filtrar sites",
+    "description": "Label of the filter field above a long list of rules."
+  },
+  "opt_rules_list_label": {
+    "message": "Sites com regra",
+    "description": "Accessible name of the list of rules."
+  },
+  "opt_rules_edit": {
+    "message": "Editar",
+    "description": "Button that opens a rule in the editor."
+  },
+  "opt_rules_edit_aria": {
+    "message": "Editar regra de $SITE$",
+    "description": "Accessible name of the edit button of a rule.",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "x"
+      }
+    }
+  },
+  "opt_rules_remove": {
+    "message": "Remover",
+    "description": "Button that removes a rule."
+  },
+  "opt_rules_remove_aria": {
+    "message": "Remover regra de $SITE$",
+    "description": "Accessible name of the remove button of a rule.",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "x"
+      }
+    }
+  },
+  "opt_rules_defaults": {
+    "message": "Usa os padrões",
+    "description": "Summary of a rule that sets no key."
+  },
+  "opt_rules_also": {
+    "message": "Também coberto por $SITE$",
+    "description": "Note on a subdomain rule whose parent domain has a rule too.",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "x"
+      }
+    }
+  },
+  "opt_rules_removed": {
+    "message": "Regra de $SITE$ removida",
+    "description": "Message of the toast shown after a rule is removed.",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "x"
+      }
+    }
+  },
+  "opt_rules_undo": {
+    "message": "Desfazer",
+    "description": "Button in the toast that restores the removed rule."
+  },
+  "opt_rules_unknown_version": {
+    "message": "Estas regras foram salvas por uma versão mais nova do Servare, então você pode vê-las mas não alterá-las. Atualize o Servare para editá-las.",
+    "description": "Notice shown when the rules have an unknown version."
+  },
+  "opt_sum_detection_on": {
+    "message": "Procurando vídeos",
+    "description": "Rule summary part for detection on."
+  },
+  "opt_sum_detection_off": {
+    "message": "Sem procurar vídeos",
+    "description": "Rule summary part for detection off."
+  },
+  "opt_sum_audio_on": {
+    "message": "Só áudio",
+    "description": "Rule summary part for audio only on."
+  },
+  "opt_sum_audio_off": {
+    "message": "Não é só áudio",
+    "description": "Rule summary part for audio only off."
+  },
+  "opt_sum_speed": {
+    "message": "Velocidade: $SPEED$",
+    "description": "Rule summary part for the speed.",
+    "placeholders": {
+      "speed": {
+        "content": "$1",
+        "example": "x"
+      }
+    }
+  },
+  "opt_sum_minsize": {
+    "message": "Ignora arquivos abaixo de $SIZE$",
+    "description": "Rule summary part for the minimum file size.",
+    "placeholders": {
+      "size": {
+        "content": "$1",
+        "example": "x"
+      }
+    }
+  },
+  "opt_sum_hide_on": {
+    "message": "Esconde partes do vídeo",
+    "description": "Rule summary part for hide fragments on."
+  },
+  "opt_sum_hide_off": {
+    "message": "Mostra partes do vídeo",
+    "description": "Rule summary part for hide fragments off."
+  },
+  "opt_sum_feed_on": {
+    "message": "Lista contínua ligada",
+    "description": "Rule summary part for feed mode on."
+  },
+  "opt_sum_feed_off": {
+    "message": "Lista contínua desligada",
+    "description": "Rule summary part for feed mode off."
+  },
+  "opt_sum_query_on": {
+    "message": "Copia parâmetros do endereço",
+    "description": "Rule summary part for propagate query on."
+  },
+  "opt_sum_query_off": {
+    "message": "Não copia parâmetros do endereço",
+    "description": "Rule summary part for propagate query off."
+  },
+  "opt_edit_title_new": {
+    "message": "Adicionar um site",
+    "description": "Heading of the rule editor for a new site."
+  },
+  "opt_edit_title_existing": {
+    "message": "Regra de $SITE$",
+    "description": "Heading of the rule editor for an existing site.",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "x"
+      }
+    }
+  },
+  "opt_edit_domain": {
+    "message": "Site",
+    "description": "Label of the site field of the rule editor."
+  },
+  "opt_edit_domain_help": {
+    "message": "A regra vale também para subdomínios, como video.example.com.",
+    "description": "Help text under the site field."
+  },
+  "opt_edit_domain_preview": {
+    "message": "Esta regra vai valer para: $SITE$",
+    "description": "Normalized site shown under the site field.",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "x"
+      }
+    }
+  },
+  "opt_edit_domain_error": {
+    "message": "Isso não parece um endereço de site. Use um nome como example.com.",
+    "description": "Inline error for an invalid site."
+  },
+  "opt_edit_save": {
+    "message": "Salvar",
+    "description": "Button that saves the rule."
+  },
+  "opt_edit_cancel": {
+    "message": "Cancelar",
+    "description": "Button that closes the rule editor without saving."
+  },
+  "opt_edit_back": {
+    "message": "Voltar às regras por site",
+    "description": "Button that returns from the rule editor to the list on narrow windows."
+  },
+  "opt_tri_default": {
+    "message": "Padrão",
+    "description": "Option of a rule setting that keeps the default."
+  },
+  "opt_tri_on": {
+    "message": "Ligado",
+    "description": "Option of a rule setting that turns it on."
+  },
+  "opt_tri_off": {
+    "message": "Desligado",
+    "description": "Option of a rule setting that turns it off."
+  },
+  "opt_key_detection": {
+    "message": "Procurar vídeos neste site",
+    "description": "Label of the detection setting of a rule."
+  },
+  "opt_key_audioonly": {
+    "message": "Este site só tem áudio",
+    "description": "Label of the audio only setting of a rule."
+  },
+  "opt_key_speed": {
+    "message": "Velocidade dos downloads",
+    "description": "Label of the speed setting of a rule."
+  },
+  "opt_speed_same": {
+    "message": "Igual à configuração geral ($SPEED$)",
+    "description": "Speed option of a rule that follows the general setting.",
+    "placeholders": {
+      "speed": {
+        "content": "$1",
+        "example": "x"
+      }
+    }
+  },
+  "opt_key_minsize": {
+    "message": "Ignorar arquivos menores que",
+    "description": "Label of the minimum file size setting of a rule."
+  },
+  "opt_minsize_placeholder": {
+    "message": "Padrão",
+    "description": "Placeholder of the minimum size field when no value is set."
+  },
+  "opt_unit_kb": {
+    "message": "KB",
+    "description": "Kilobytes unit option."
+  },
+  "opt_unit_mb": {
+    "message": "MB",
+    "description": "Megabytes unit option."
+  },
+  "opt_key_hide": {
+    "message": "Esconder as partes do vídeo quando o vídeo inteiro foi encontrado",
+    "description": "Label of the hide fragments setting of a rule."
+  },
+  "opt_key_feed": {
+    "message": "Manter uma lista contínua em páginas que rolam sem fim",
+    "description": "Label of the feed mode setting of a rule."
+  },
+  "opt_key_query": {
+    "message": "Copiar os parâmetros do endereço do vídeo para as suas partes",
+    "description": "Label of the propagate query setting of a rule."
+  },
+  "opt_edit_more": {
+    "message": "Mais opções para este site",
+    "description": "Summary of the disclosure with the advanced rule settings."
+  },
+  "hist_title": {
+    "message": "Histórico",
+    "description": "Main heading of the History page."
+  },
+  "hist_nav_options": {
+    "message": "Configurações",
+    "description": "Navigation link from the History page to the options page."
+  },
+  "hist_search_label": {
+    "message": "Buscar no histórico",
+    "description": "Label of the history search field."
+  },
+  "hist_clear": {
+    "message": "Limpar histórico",
+    "description": "Button that clears the whole history."
+  },
+  "hist_today": {
+    "message": "Hoje",
+    "description": "Heading of the group of today's downloads."
+  },
+  "hist_yesterday": {
+    "message": "Ontem",
+    "description": "Heading of the group of yesterday's downloads."
+  },
+  "hist_failed": {
+    "message": "Não terminou",
+    "description": "Tag on an entry whose download failed."
+  },
+  "hist_open_page": {
+    "message": "Abrir a página",
+    "description": "Link that opens the page the video came from."
+  },
+  "hist_retry_page": {
+    "message": "Tentar de novo na página",
+    "description": "Link on a failed entry that opens the page to try again."
+  },
+  "hist_remove": {
+    "message": "Remover do histórico",
+    "description": "Button that removes one entry."
+  },
+  "hist_remove_aria": {
+    "message": "Remover do histórico: $TITLE$",
+    "description": "Accessible name of the remove button of an entry.",
+    "placeholders": {
+      "title": {
+        "content": "$1",
+        "example": "x"
+      }
+    }
+  },
+  "hist_remove_help": {
+    "message": "O arquivo continua no seu computador.",
+    "description": "Description of the remove button."
+  },
+  "hist_removed": {
+    "message": "Removido do histórico",
+    "description": "Polite status message announced after an entry is removed."
+  },
+  "hist_details": {
+    "message": "Detalhes",
+    "description": "Summary of the disclosure with the details of an entry."
+  },
+  "hist_d_file": {
+    "message": "Nome do arquivo",
+    "description": "Detail label for the saved file name."
+  },
+  "hist_d_format": {
+    "message": "Formato",
+    "description": "Detail label for the kind of video."
+  },
+  "hist_d_page": {
+    "message": "Endereço da página",
+    "description": "Detail label for the full page address."
+  },
+  "hist_kind_direct": {
+    "message": "Arquivo direto",
+    "description": "Format name of a direct file."
+  },
+  "hist_kind_hls": {
+    "message": "Transmissão HLS",
+    "description": "Format name of an HLS stream."
+  },
+  "hist_kind_dash": {
+    "message": "Transmissão DASH",
+    "description": "Format name of a DASH stream."
+  },
+  "hist_empty_title": {
+    "message": "Nada por aqui ainda",
+    "description": "Heading of the empty history message."
+  },
+  "hist_empty_body": {
+    "message": "Os downloads que você terminar vão aparecer aqui. Downloads de janelas privativas nunca são guardados.",
+    "description": "Body of the empty history message."
+  },
+  "hist_footnote": {
+    "message": "Downloads de janelas privativas nunca são guardados. Remover uma entrada nunca apaga o arquivo.",
+    "description": "Footnote at the end of the history list."
+  },
+  "hist_no_match": {
+    "message": "Nada corresponde a “$QUERY$”",
+    "description": "Message when the search finds nothing.",
+    "placeholders": {
+      "query": {
+        "content": "$1",
+        "example": "x"
+      }
+    }
+  },
+  "hist_search_reset": {
+    "message": "Limpar a busca",
+    "description": "Button that empties the search field."
+  },
+  "hist_truncated": {
+    "message": "Os downloads mais antigos não são exibidos.",
+    "description": "Note at the end of a list that was cut at its limit."
+  },
+  "hist_loading": {
+    "message": "Carregando o seu histórico",
+    "description": "Accessible name of the loading placeholder."
+  },
+  "hist_confirm_title": {
+    "message": "Limpar o seu histórico?",
+    "description": "Heading of the clear history dialog."
+  },
+  "hist_confirm_body": {
+    "message": "Isso remove todas as entradas da lista ($COUNT$). Os arquivos continuam no seu computador.",
+    "description": "Body of the clear history dialog.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "x"
+      }
+    }
+  },
+  "hist_confirm_body_search": {
+    "message": "Limpar remove todas as entradas ($COUNT$), não só as da sua busca. Os arquivos continuam no seu computador.",
+    "description": "Body of the clear history dialog while a search is active.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "x"
+      }
+    }
+  },
+  "hist_confirm_cancel": {
+    "message": "Cancelar",
+    "description": "Button that closes the clear history dialog."
+  },
+  "hist_error": {
+    "message": "Não conseguimos carregar o seu histórico. Tente de novo em instantes.",
+    "description": "Message when the history request fails."
+  },
+  "hist_try_again": {
+    "message": "Tentar de novo",
+    "description": "Button that repeats the failed history request."
+  },
+  "opt_name_sample_title": {
+    "message": "Vídeo de exemplo",
+    "description": "Sample video title used in the live file name example."
+  },
+  "opt_unit_label": {
+    "message": "Unidade",
+    "description": "Accessible name of the unit picker next to the minimum file size."
+  },
+  "opt_loading": {
+    "message": "Carregando as suas configurações",
+    "description": "Accessible name of the options page loading placeholder."
+  },
+  "opt_error": {
+    "message": "Não conseguimos carregar as suas configurações. Tente de novo em instantes.",
+    "description": "Message when the settings request fails."
+  },
+  "opt_try_again": {
+    "message": "Tentar de novo",
+    "description": "Button that repeats the failed settings request."
   }
 }

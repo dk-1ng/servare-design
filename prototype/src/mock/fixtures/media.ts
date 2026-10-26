@@ -1,8 +1,9 @@
-import type { HistoryEntry, MediaItem, Track, Variant } from '../types.ts';
+import type { HistoryEntry, MediaItem, RulesDocument, Settings, Track, Variant } from '../types.ts';
 
 export const TAB_ID = 42;
 const PAGE = 'https://example.com/watch/123';
 const NOW = 1761400000000;
+export const MOCK_NOW = NOW;
 
 /** Local stand-in for a page thumbnail: the prototype must not request anything remote. */
 function thumbnail(hue: number): string {
@@ -192,4 +193,43 @@ export function sampleHistory(): HistoryEntry[] {
       status: 'failed',
     },
   ];
+}
+
+/** Contract §4.4 defaults. */
+export function defaultSettings(): Settings {
+  return {
+    nameTemplate: '{title}',
+    subfolder: '',
+    saveAs: false,
+    speedProfile: 'standard',
+    mp3Quality: 2,
+    failureThreshold: 0.2,
+    preferredLanguages: [],
+  };
+}
+
+export function sampleSettings(): Settings {
+  return {
+    ...defaultSettings(),
+    nameTemplate: '{title} - {host}',
+    subfolder: 'Videos',
+    preferredLanguages: ['pt-BR', 'en'],
+  };
+}
+
+export function sampleRules(): RulesDocument {
+  return {
+    version: 1,
+    domains: {
+      'example.com': { speedProfile: 'economy', detection: false },
+      'video.example.com': { audioOnly: true },
+      'cdn.example.org': {},
+      'news.example.net': {
+        minDirectSize: 524_288,
+        feedMode: true,
+        hideFragments: true,
+        propagateQuery: false,
+      },
+    },
+  };
 }

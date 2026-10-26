@@ -4,7 +4,7 @@ import { isScenarioName, type ScenarioName } from './scenarios.ts';
 export { MockClient } from './client.ts';
 export type { MockClientOptions } from './client.ts';
 export { SCENARIO_NAMES, type ScenarioName } from './scenarios.ts';
-export { TAB_ID } from './fixtures/media.ts';
+export { MOCK_NOW, TAB_ID } from './fixtures/media.ts';
 export * from './types.ts';
 
 /** Reads `?scenario=` from the page URL; falls back to `many`. */
