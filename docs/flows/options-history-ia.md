@@ -259,8 +259,10 @@ Every field of `Settings` and `DomainRule` (contract §4.4) and of `HistoryEntry
 
 Found here; details in [`contract-gaps.md`](../discovery/contract-gaps.md): **G18** (rule defaults, bundled rules, overlap precedence, accepted domain forms), **G19** (settings defaults, `preferredLanguages` order, file-name preview, `saveAs` with `subfolder`), **G20** (history order, retention, link to jobs, private flag on jobs). Reconfirmed: G1 (open file from history), G2 (why an entry failed), G3 (paging and search), G13 (thumbnail and audio mode in history), G17 (dismissing a job vs history).
 
-## 7. Open questions for the maintainer
+## 7. Maintainer answers
 
-1. MP3 presets: are 0 / 2 / 5 the right three points, or should the basic layer be the 0–9 slider alone?
-2. History search limit of 500 entries before the "older downloads not shown" note: acceptable until G3 is answered?
-3. Should "Rules for this site" be reachable from the popup (opening the options page at that domain's rule) in M5, or is the options page the only entry?
+Answered after the #13 review; the maintainer asked for the recommended option on each.
+
+1. **MP3 presets:** keep the three presets 0 / 2 / 5 in the basic layer, with the exact 0–9 slider in Advanced. A non-technical user chooses by outcome, not by a number.
+2. **History search limit:** 500 entries is acceptable until G3 is answered; the end-of-list note covers the truncated case.
+3. **"Rules for this site" from the popup:** the options page stays the only entry in M5. A deep link needs a domain parameter on the options page and a new popup control, and the popup structure (ADR 0005) is settled; revisit if testing shows people look for it there.
