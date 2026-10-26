@@ -20,7 +20,7 @@ Read `CLAUDE.md`, `docs/brief.md`, `DESIGN.md` (when it exists), the issue with 
 ## How you work
 
 1. Work on the branch the main session prepared; do not switch branches, push, open PRs or edit labels.
-2. Small Conventional Commits in English, without AI attribution lines.
+2. Small Conventional Commits in English, ending with the trailer `Assisted-by: Claude Code` after a blank line (never `Co-Authored-By` or "Generated with …").
 3. Before reporting, run `pnpm check` and the issue's acceptance checks.
 4. If the design or the contract is ambiguous, stop and report instead of inventing.
 

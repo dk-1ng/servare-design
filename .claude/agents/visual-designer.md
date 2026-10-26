@@ -23,7 +23,7 @@ Read `CLAUDE.md`, `docs/brief.md`, `DESIGN.md` (when it exists) and the issue wi
 1. Moodboard issues: describe what each reference image contributes (color, density, shape, type, mood), derive three personality adjectives and 2–3 directions, and recommend one. Show them as an HTML page in `docs/visual/`.
 2. Token and icon issues: implement, render a specimen page and check contrast.
 3. Keep `DESIGN.md` (repository root) in sync once it exists: it is the visual-system summary other agents read.
-4. Commit with Conventional Commits in English, without AI attribution lines. Do not push or open PRs.
+4. Commit with Conventional Commits in English, ending with the trailer `Assisted-by: Claude Code` after a blank line (never `Co-Authored-By` or "Generated with …"). Do not push or open PRs.
 
 ## Final report
 
