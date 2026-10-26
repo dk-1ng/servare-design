@@ -342,5 +342,189 @@
         "example": "2 downloading"
       }
     }
+  },
+  "popup_empty_title": {
+    "message": "Nada encontrado ainda",
+    "description": "Heading of the popup body when no media was found on the page."
+  },
+  "popup_empty_body": {
+    "message": "Reproduza o vídeo na página e ele aparecerá aqui.",
+    "description": "Next step shown when no media was found on the page."
+  },
+  "popup_btn_scan": {
+    "message": "Examinar esta página",
+    "description": "Asks Servare to look for media the page has not played yet."
+  },
+  "popup_scanning": {
+    "message": "Procurando…",
+    "description": "Label of the scan button while the scan runs."
+  },
+  "popup_scan_found": {
+    "message": "Encontrados nesta página: $COUNT$",
+    "description": "Result of a scan that found media.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "2"
+      }
+    }
+  },
+  "popup_scan_none": {
+    "message": "Ainda nada. Reproduza o vídeo primeiro e examine de novo.",
+    "description": "Result of a scan that found nothing."
+  },
+  "popup_scan_blob": {
+    "message": "Esta página reproduz o vídeo de um jeito que o Servare não consegue capturar sozinho.",
+    "description": "Calm notice when the page builds its video in memory; no workaround is offered."
+  },
+  "popup_scan_blob_tech": {
+    "message": "A página monta o vídeo na memória (MSE, endereço blob:), então não há um endereço de arquivo para salvar.",
+    "description": "Technical detail behind the blob-only notice."
+  },
+  "popup_all_protected": {
+    "message": "Tudo nesta página é protegido. O Servare não salva conteúdo protegido.",
+    "description": "Shown when every item found on the page is protected."
+  },
+  "popup_reconnecting": {
+    "message": "Reconectando ao Servare…",
+    "description": "Discreet note while the connection to the background is being restored."
+  },
+  "popup_loading": {
+    "message": "Carregando…",
+    "description": "Accessible name of the placeholder while the lists load."
+  },
+  "popup_details": {
+    "message": "Detalhes",
+    "description": "Disclosure that reveals technical details of an error."
+  },
+  "popup_detail_http": {
+    "message": "O site respondeu com o código $STATUS$.",
+    "description": "Technical detail of an HTTP error.",
+    "placeholders": {
+      "status": {
+        "content": "$1",
+        "example": "403"
+      }
+    }
+  },
+  "popup_detail_incomplete": {
+    "message": "$PERCENT$% do vídeo foi recebido.",
+    "description": "Technical detail of an incomplete download.",
+    "placeholders": {
+      "percent": {
+        "content": "$1",
+        "example": "91"
+      }
+    }
+  },
+  "popup_detail_decrypt": {
+    "message": "Uma chave necessária para ler o vídeo (AES-128) não estava disponível.",
+    "description": "Technical detail of a decrypt error."
+  },
+  "popup_detail_kind": {
+    "message": "Tipo de erro: $KIND$",
+    "description": "Technical detail naming the error kind.",
+    "placeholders": {
+      "kind": {
+        "content": "$1",
+        "example": "quota"
+      }
+    }
+  },
+  "popup_err_incomplete_pct": {
+    "message": "Cerca de $PERCENT$% chegou. Tente de novo.",
+    "description": "Short next step for an incomplete download, with how much arrived.",
+    "placeholders": {
+      "percent": {
+        "content": "$1",
+        "example": "91"
+      }
+    }
+  },
+  "popup_err_auth_noretry": {
+    "message": "Abra a página, reproduza o vídeo uma vez e salve de novo.",
+    "description": "Next step for a refused download when Retry is not available yet."
+  },
+  "popup_status_waiting_for": {
+    "message": "Aguardando “$TITLE$” terminar",
+    "description": "Status of a download waiting for a named download from the same site.",
+    "placeholders": {
+      "title": {
+        "content": "$1",
+        "example": "Jornal da noite (ao vivo)"
+      }
+    }
+  },
+  "popup_btn_stop_blocker": {
+    "message": "Parar essa gravação e guardar",
+    "description": "Ends the live recording that blocks this download and keeps what was recorded."
+  },
+  "popup_btn_pause_blocker": {
+    "message": "Pausar “$TITLE$”",
+    "description": "Pauses the download that blocks this one.",
+    "placeholders": {
+      "title": {
+        "content": "$1",
+        "example": "Vídeo de exemplo"
+      }
+    }
+  },
+  "popup_confirm_discard": {
+    "message": "Descartar o que foi gravado?",
+    "description": "Confirmation shown after Cancel on a recording."
+  },
+  "popup_btn_discard": {
+    "message": "Descartar",
+    "description": "Confirms cancelling and discarding what was saved."
+  },
+  "popup_btn_keep_recording": {
+    "message": "Continuar gravando",
+    "description": "Leaves the cancel confirmation without discarding anything."
+  },
+  "popup_done_where": {
+    "message": "Salvo na pasta de downloads como $NAME$.",
+    "description": "Fallback text for a finished download (gap G1).",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Vídeo de exemplo.mp4"
+      }
+    }
+  },
+  "popup_notice_failed": {
+    "message": "Não foi possível: $MESSAGE$",
+    "description": "Notice for a request the background refused; shows its message as given (gap G5).",
+    "placeholders": {
+      "message": {
+        "content": "$1",
+        "example": "media not found"
+      }
+    }
+  },
+  "popup_notice_generic": {
+    "message": "Algo deu errado no Servare. Tente de novo.",
+    "description": "Generic notice for an invalid request or response."
+  },
+  "popup_notice_timeout": {
+    "message": "O Servare não respondeu a tempo.",
+    "description": "Notice when a request timed out."
+  },
+  "popup_btn_try_again": {
+    "message": "Tentar de novo",
+    "description": "Repeats the request that failed."
+  },
+  "popup_status_starting": {
+    "message": "Iniciando…",
+    "description": "Status of a download that has not saved any data yet."
+  },
+  "popup_status_waiting_for_live": {
+    "message": "Aguardando a gravação de “$TITLE$” parar",
+    "description": "Status of a download waiting for a live recording from the same site to stop.",
+    "placeholders": {
+      "title": {
+        "content": "$1",
+        "example": "Jornal da noite (ao vivo)"
+      }
+    }
   }
 }

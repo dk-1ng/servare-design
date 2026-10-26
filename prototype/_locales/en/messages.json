@@ -342,5 +342,189 @@
         "example": "2 downloading"
       }
     }
+  },
+  "popup_empty_title": {
+    "message": "Nothing found yet",
+    "description": "Heading of the popup body when no media was found on the page."
+  },
+  "popup_empty_body": {
+    "message": "Play the video on the page and it will show up here.",
+    "description": "Next step shown when no media was found on the page."
+  },
+  "popup_btn_scan": {
+    "message": "Scan this page",
+    "description": "Asks Servare to look for media the page has not played yet."
+  },
+  "popup_scanning": {
+    "message": "Looking…",
+    "description": "Label of the scan button while the scan runs."
+  },
+  "popup_scan_found": {
+    "message": "Found on this page: $COUNT$",
+    "description": "Result of a scan that found media.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "1"
+      }
+    }
+  },
+  "popup_scan_none": {
+    "message": "Still nothing. Play the video first, then scan again.",
+    "description": "Result of a scan that found nothing."
+  },
+  "popup_scan_blob": {
+    "message": "This page plays its video in a way Servare cannot capture on its own.",
+    "description": "Calm notice when the page builds its video in memory; no workaround is offered."
+  },
+  "popup_scan_blob_tech": {
+    "message": "The page builds the video in memory (MSE, blob: address), so there is no file address to save.",
+    "description": "Technical detail behind the blob-only notice."
+  },
+  "popup_all_protected": {
+    "message": "Everything on this page is protected. Servare does not save protected content.",
+    "description": "Shown when every item found on the page is protected."
+  },
+  "popup_reconnecting": {
+    "message": "Reconnecting to Servare…",
+    "description": "Discreet note while the connection to the background is being restored."
+  },
+  "popup_loading": {
+    "message": "Loading…",
+    "description": "Accessible name of the placeholder while the lists load."
+  },
+  "popup_details": {
+    "message": "Details",
+    "description": "Disclosure that reveals technical details of an error."
+  },
+  "popup_detail_http": {
+    "message": "The site answered with code $STATUS$.",
+    "description": "Technical detail of an HTTP error.",
+    "placeholders": {
+      "status": {
+        "content": "$1",
+        "example": "403"
+      }
+    }
+  },
+  "popup_detail_incomplete": {
+    "message": "$PERCENT$% of the video was received.",
+    "description": "Technical detail of an incomplete download.",
+    "placeholders": {
+      "percent": {
+        "content": "$1",
+        "example": "91"
+      }
+    }
+  },
+  "popup_detail_decrypt": {
+    "message": "A key needed to read the video (AES-128) was not available.",
+    "description": "Technical detail of a decrypt error."
+  },
+  "popup_detail_kind": {
+    "message": "Error type: $KIND$",
+    "description": "Technical detail naming the error kind.",
+    "placeholders": {
+      "kind": {
+        "content": "$1",
+        "example": "quota"
+      }
+    }
+  },
+  "popup_err_incomplete_pct": {
+    "message": "About $PERCENT$% arrived. Try again.",
+    "description": "Short next step for an incomplete download, with how much arrived.",
+    "placeholders": {
+      "percent": {
+        "content": "$1",
+        "example": "91"
+      }
+    }
+  },
+  "popup_err_auth_noretry": {
+    "message": "Open the page, play the video once, then save it again.",
+    "description": "Next step for a refused download when Retry is not available yet."
+  },
+  "popup_status_waiting_for": {
+    "message": "Waiting for “$TITLE$” to finish",
+    "description": "Status of a download waiting for a named download from the same site.",
+    "placeholders": {
+      "title": {
+        "content": "$1",
+        "example": "Evening news (live)"
+      }
+    }
+  },
+  "popup_btn_stop_blocker": {
+    "message": "Stop that recording and keep it",
+    "description": "Ends the live recording that blocks this download and keeps what was recorded."
+  },
+  "popup_btn_pause_blocker": {
+    "message": "Pause “$TITLE$”",
+    "description": "Pauses the download that blocks this one.",
+    "placeholders": {
+      "title": {
+        "content": "$1",
+        "example": "Sample video"
+      }
+    }
+  },
+  "popup_confirm_discard": {
+    "message": "Discard what was recorded?",
+    "description": "Confirmation shown after Cancel on a recording."
+  },
+  "popup_btn_discard": {
+    "message": "Discard",
+    "description": "Confirms cancelling and discarding what was saved."
+  },
+  "popup_btn_keep_recording": {
+    "message": "Keep recording",
+    "description": "Leaves the cancel confirmation without discarding anything."
+  },
+  "popup_done_where": {
+    "message": "Saved in your downloads folder as $NAME$.",
+    "description": "Fallback text for a finished download (gap G1).",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Sample video.mp4"
+      }
+    }
+  },
+  "popup_notice_failed": {
+    "message": "Could not do that: $MESSAGE$",
+    "description": "Notice for a request the background refused; shows its message as given (gap G5).",
+    "placeholders": {
+      "message": {
+        "content": "$1",
+        "example": "media not found"
+      }
+    }
+  },
+  "popup_notice_generic": {
+    "message": "Something went wrong in Servare. Try again.",
+    "description": "Generic notice for an invalid request or response."
+  },
+  "popup_notice_timeout": {
+    "message": "Servare did not answer in time.",
+    "description": "Notice when a request timed out."
+  },
+  "popup_btn_try_again": {
+    "message": "Try again",
+    "description": "Repeats the request that failed."
+  },
+  "popup_status_starting": {
+    "message": "Starting…",
+    "description": "Status of a download that has not saved any data yet."
+  },
+  "popup_status_waiting_for_live": {
+    "message": "Waiting until the recording of “$TITLE$” stops",
+    "description": "Status of a download waiting for a live recording from the same site to stop.",
+    "placeholders": {
+      "title": {
+        "content": "$1",
+        "example": "Evening news (live)"
+      }
+    }
   }
 }

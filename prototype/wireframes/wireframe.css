@@ -430,3 +430,218 @@ body[data-variant='c'] .row > .bar {
     transition: background-color 0.1s;
   }
 }
+
+/* ---- critical states page (issue #12): light and dark, documentation chrome ---- */
+body[data-page='states'] {
+  padding-inline: 16px;
+  background: var(--page);
+  color: var(--ink);
+  --page: #e4e4e4;
+}
+@media (prefers-color-scheme: dark) {
+  body[data-page='states'] {
+    --ink: #ededed;
+    --ink-2: #b4b4b4;
+    --line: #555;
+    --fill: #2b2b2b;
+    --fill-2: #3d3d3d;
+    --paper: #181818;
+    --page: #0e0e0e;
+    color-scheme: dark;
+  }
+  body[data-page='states'] .thumb {
+    filter: grayscale(1) brightness(0.8);
+  }
+}
+.states-doc {
+  max-inline-size: 1200px;
+  margin-inline: auto;
+}
+.states-doc h1 {
+  font-size: 20px;
+  margin-block: 12px 4px;
+}
+.states-doc h2 {
+  margin-block: 28px 8px;
+  padding-block-end: 4px;
+  border-block-end: 1px solid var(--ink);
+  font-size: 16px;
+}
+.states-doc a {
+  color: var(--ink);
+}
+.states-doc .toc,
+.states-doc .langs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 14px;
+  margin: 6px 0;
+  padding: 0;
+  list-style: none;
+}
+.states-doc .toc a,
+.states-doc .langs a {
+  display: inline-block;
+  padding-block: 3px;
+}
+.states-doc .langs a[aria-current] {
+  font-weight: 700;
+  text-decoration: none;
+}
+.state-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr));
+  gap: 28px 20px;
+  align-items: start;
+}
+figure.state {
+  margin: 0;
+  min-inline-size: 0;
+}
+figure.state figcaption {
+  inline-size: min(380px, 100%);
+  margin-block-end: 6px;
+}
+figure.state h3 {
+  margin: 0 0 4px;
+  font-size: 14px;
+}
+.ids {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px 4px;
+  margin: 0 0 4px;
+  padding: 0;
+  list-style: none;
+}
+.ids code {
+  padding-inline: 4px;
+  border: 1px solid var(--ink-2);
+  font-size: 11px;
+}
+.anno {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 2px 8px;
+  margin: 0;
+  font-size: 12px;
+}
+.anno dt {
+  color: var(--ink-2);
+  font-weight: 600;
+}
+.anno dd {
+  margin: 0;
+}
+figure.state .popup {
+  inline-size: min(380px, 100%);
+  margin-inline: 0;
+}
+
+/* notices, empty states and loading placeholders inside the popup */
+.notice {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 8px;
+  margin: 0;
+  padding-inline: 12px;
+  padding-block: 6px;
+  border-block-end: 1px solid var(--line);
+  background: var(--fill);
+}
+.notice p {
+  margin: 0;
+  flex: 1 1 12em;
+}
+.empty-state {
+  display: grid;
+  justify-items: start;
+  gap: 6px;
+  padding-inline: 12px;
+  padding-block: 24px;
+}
+.empty-state h4 {
+  margin: 0;
+  font-size: 14px;
+}
+.empty-state p {
+  margin: 0;
+}
+.skeleton {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
+  gap: 10px;
+  padding-inline: 12px;
+  padding-block: 8px;
+  border-block-end: 1px solid var(--line);
+}
+.skeleton i {
+  display: block;
+  block-size: 12px;
+  margin-block: 4px;
+  background: var(--fill-2);
+}
+.skeleton i:first-child {
+  grid-row: span 2;
+  block-size: 27px;
+}
+.details {
+  flex: 1 1 100%;
+  color: var(--ink-2);
+}
+.details summary {
+  cursor: pointer;
+  min-block-size: 24px;
+}
+.details p {
+  margin: 4px 0 0;
+}
+.confirm {
+  flex: 1 1 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 6px;
+}
+.confirm p {
+  flex: 1 1 100%;
+  margin: 0;
+  font-weight: 600;
+}
+button:disabled {
+  color: var(--ink-2);
+  border-color: var(--line);
+  cursor: default;
+}
+button[aria-disabled='true'] {
+  color: var(--ink-2);
+  cursor: default;
+}
+.sr-only {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.brand {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+}
+.view-title {
+  margin: 0;
+  padding-inline: 12px;
+  padding-block: 10px 4px;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+.group {
+  margin: 0;
+  padding-inline: 12px;
+  padding-block: 8px 4px;
+  color: var(--ink-2);
+  font-size: 12px;
+}
