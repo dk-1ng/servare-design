@@ -16,25 +16,28 @@ The IDs are stable; the state inventory and later issues refer to them.
 
 ## Summary
 
-| ID  | Gap                                           | Marker          | Priority |
-| --- | --------------------------------------------- | --------------- | -------- |
-| G1  | Open or show a delivered file                 | Blocking design | P1       |
-| G2  | Why a history entry failed                    | Nice to have    | P3       |
-| G3  | Paging and search in history                  | Nice to have    | P3       |
-| G4  | Whether a job is a live recording             | Blocking design | P1       |
-| G5  | Translatable reason for interrupted jobs      | Nice to have    | P2       |
-| G6  | Why a job is paused                           | Nice to have    | P2       |
-| G7  | What is kept after a failure                  | Nice to have    | P2       |
-| G8  | Why a page has no media                       | Nice to have    | P2       |
-| G9  | Estimated file size (item and job)            | Blocking design | P1       |
-| G10 | Size or bitrate per quality option            | Blocking design | P1       |
-| G11 | Job title and picture after the tab navigated | Blocking design | P1       |
-| G12 | Speed profile in effect for a job             | Nice to have    | P3       |
-| G13 | History entry thumbnail and audio mode        | Nice to have    | P3       |
-| G14 | Job timestamps and queue order                | Nice to have    | P2       |
-| G15 | Download before the manifest is parsed        | Blocking design | P1       |
-| G16 | Behavior clarifications (live, stop, client)  | Nice to have    | P3       |
-| G17 | Retry lineage and removing a job              | Nice to have    | P2       |
+| ID  | Gap                                             | Marker          | Priority |
+| --- | ----------------------------------------------- | --------------- | -------- |
+| G1  | Open or show a delivered file                   | Blocking design | P1       |
+| G2  | Why a history entry failed                      | Nice to have    | P3       |
+| G3  | Paging and search in history                    | Nice to have    | P3       |
+| G4  | Whether a job is a live recording               | Blocking design | P1       |
+| G5  | Translatable reason for interrupted jobs        | Nice to have    | P2       |
+| G6  | Why a job is paused                             | Nice to have    | P2       |
+| G7  | What is kept after a failure                    | Nice to have    | P2       |
+| G8  | Why a page has no media                         | Nice to have    | P2       |
+| G9  | Estimated file size (item and job)              | Blocking design | P1       |
+| G10 | Size or bitrate per quality option              | Blocking design | P1       |
+| G11 | Job title and picture after the tab navigated   | Blocking design | P1       |
+| G12 | Speed profile in effect for a job               | Nice to have    | P3       |
+| G13 | History entry thumbnail and audio mode          | Nice to have    | P3       |
+| G14 | Job timestamps and queue order                  | Nice to have    | P2       |
+| G15 | Download before the manifest is parsed          | Blocking design | P1       |
+| G16 | Behavior clarifications (live, stop, client)    | Nice to have    | P3       |
+| G17 | Retry lineage and removing a job                | Nice to have    | P2       |
+| G18 | Site rule defaults, bundled rules and overlap   | Nice to have    | P3       |
+| G19 | Settings defaults, language order, name preview | Nice to have    | P3       |
+| G20 | History order, retention and link to jobs       | Nice to have    | P2       |
 
 ## Entries
 
@@ -206,4 +209,34 @@ The IDs are stable; the state inventory and later issues refer to them.
 - **Proposal:** document in §4.2 that `download/remove` only removes the job from `download/list` and never touches history; optionally `DownloadJob.retryOf?: string` (the failed job's `id`) on jobs created by `download/retry`.
 - **Compatibility:** docs only, or optional field; compatible.
 - **Fallback:** until §4.2 confirms that `download/remove` leaves history alone, the UI never calls it on a retried job: the failed card stays in the queue, marked "Tried again" (a client-side label on the job whose retry returned a new job in this session). User-initiated dismissal stays available, since the user asked for it.
+- **Marker:** nice to have. **Priority:** P2.
+
+### G18 — Site rule defaults, bundled rules and overlap
+
+- **Found in:** #10 (rules editor, `RULE-EDIT`).
+- **Use case:** in the site rules editor, the user sees what "Default" means for each key before overriding it, knows whether a rule came with Servare, and understands which rule applies when a site and its subdomain both have one.
+- **Missing:** §4.4 says every `DomainRule` key "falls back to the default", but only `speedProfile`'s default is documented (`Settings.speedProfile`); the design §6 values are a sample rule. It is not documented whether `rules/get` includes the entries of the bundled `default-rules.json`, whether removing one of them survives an extension update, which rule wins (or whether keys merge) when `example.com` and `video.example.com` both have a rule, and which domain forms `rules/set` accepts (scheme or path pasted in, port, leading dot, wildcard, IDN vs punycode); and the planned `settings/updated` event (§5) fires when "settings or rules changed" but carries only `Settings`, so a page cannot tell a rule change apart or get the new rules without re-fetching.
+- **Proposal:** document the per-key defaults, precedence (expected: most specific domain wins per key) and accepted domain forms in §4.4; optionally `settings/updated` gains `rules?: { version, domains }`, and `rules/get` → `{ version, domains, defaults?: Required<DomainRule>, bundled?: string[] }` (the effective defaults and which domains came from `default-rules.json`).
+- **Compatibility:** docs plus optional response fields; compatible.
+- **Fallback:** "Default" without a value for every key except `speedProfile`; no "built-in" marker; a subdomain row says "Also covered by {parent}" without claiming which wins; the options page re-fetches `rules/get` on every `settings/updated`; the UI strips scheme, path and port before sending and surfaces `invalid-payload` otherwise.
+- **Marker:** nice to have. **Priority:** P3.
+
+### G19 — Settings defaults, language order, name preview
+
+- **Found in:** #10 (options page, Saving files and Languages).
+- **Use case:** restoring defaults without the UI hard-coding them; telling the user whether the order of preferred languages matters; showing the real file name a template will produce; knowing whether the subfolder still applies when the user is asked where to save.
+- **Missing:** no way to read the default `Settings` from servare; §4.4 does not say whether `preferredLanguages` is ordered by priority; the UI cannot reproduce design §7 sanitization exactly (reserved names, 180-character limit, `video` fallback), and it is not documented what happens to an unknown `{variable}` in `nameTemplate` (kept literally, removed, or `invalid-payload`); the effect of `subfolder` when `saveAs` is `true` is not documented.
+- **Proposal:** `settings/get` → `Settings & { defaults?: Settings }` or a `settings/defaults` request; document that `preferredLanguages` is in priority order; a request `settings/previewName { nameTemplate, subfolder? } → { outputName, path }` using fixed sample metadata; document unknown variables and the `saveAs`/`subfolder` interaction in §4.4.
+- **Compatibility:** optional field or new requests, plus docs; compatible.
+- **Fallback:** "Restore defaults" sends the §4.4 defaults; languages are shown as an ordered list labeled by priority; the example file name is computed in the UI from sample values and labeled as an example; the subfolder field stays editable when `saveAs` is on, with no claim about where the dialog opens.
+- **Marker:** nice to have. **Priority:** P3.
+
+### G20 — History order, retention and link to jobs
+
+- **Found in:** #10 (history page, relation to the popup's finished jobs).
+- **Use case:** the history list is in a predictable order; the user knows how long history is kept; a retried download does not leave confusing duplicates; the popup can say "not added to history" for a private-window job.
+- **Missing:** `history/list` order and retention (count or age cap) are not documented; the planned `history/updated` event (§5) carries the full `entries` list, and it is not documented how that relates to `history/list { limit }` or to paging (G3); it is not documented whether each failed attempt of a retried download becomes its own entry (see G17); `HistoryEntry` does not reference its job, and `DownloadJob` does not say whether its tab was private (the background records it, design §4.1.1).
+- **Proposal:** document `history/list` as newest first, the retention policy, and whether `history/updated.entries` is the whole history or the first page; `HistoryEntry.jobId?: string`; `DownloadJob.private?: boolean`.
+- **Compatibility:** optional fields and docs; compatible.
+- **Fallback:** the history page renders from `history/updated` and re-fetches `history/list` on reconnect and when the tab becomes visible; sorts by `completedAt` in the UI and applies its own display limit; shows no retention promise; the popup's done card says nothing about history.
 - **Marker:** nice to have. **Priority:** P2.
