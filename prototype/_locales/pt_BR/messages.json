@@ -16,5 +16,331 @@
         "example": "pt_BR"
       }
     }
+  },
+  "popup_title": {
+    "message": "Servare",
+    "description": "Name shown in the popup header."
+  },
+  "popup_history": {
+    "message": "Histórico",
+    "description": "Header link that opens the History page."
+  },
+  "popup_page_heading": {
+    "message": "Nesta página",
+    "description": "Heading of the list of media found on the current page."
+  },
+  "popup_untitled": {
+    "message": "Vídeo sem título",
+    "description": "Shown when a detected item has no title."
+  },
+  "popup_duration_unknown": {
+    "message": "Duração desconhecida",
+    "description": "Shown instead of the duration when it is not known."
+  },
+  "popup_duration_live": {
+    "message": "Ao vivo",
+    "description": "Label for a live broadcast, in place of the duration."
+  },
+  "popup_btn_download": {
+    "message": "Baixar",
+    "description": "Saves the item with the default choices."
+  },
+  "popup_btn_record": {
+    "message": "Gravar",
+    "description": "Starts recording a live item with the default choices."
+  },
+  "popup_btn_choices": {
+    "message": "Opções",
+    "description": "Opens the quality, audio and subtitle choices of an item."
+  },
+  "popup_btn_pause": {
+    "message": "Pausar",
+    "description": "Pauses a download."
+  },
+  "popup_btn_resume": {
+    "message": "Retomar",
+    "description": "Resumes a paused download."
+  },
+  "popup_btn_cancel": {
+    "message": "Cancelar",
+    "description": "Cancels a download and discards what was saved."
+  },
+  "popup_btn_stop": {
+    "message": "Parar e guardar",
+    "description": "Ends a live recording and keeps what was recorded. Different from Cancel."
+  },
+  "popup_btn_retry": {
+    "message": "Tentar de novo",
+    "description": "Starts a failed download again."
+  },
+  "popup_btn_dismiss": {
+    "message": "Dispensar",
+    "description": "Removes a finished or failed download from the list."
+  },
+  "popup_btn_back": {
+    "message": "Voltar",
+    "description": "Returns to the previous view of the popup."
+  },
+  "popup_btn_more_jobs": {
+    "message": "+$COUNT$",
+    "description": "Opens the item view when an item has more downloads than the row can show.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "2"
+      }
+    }
+  },
+  "popup_protected_label": {
+    "message": "Protegido: o Servare não pode salvar este.",
+    "description": "Calm label on a protected video."
+  },
+  "popup_protected_why": {
+    "message": "O site protege este vídeo, e o Servare não contorna proteções.",
+    "description": "Explanation shown by the Why disclosure on a protected video."
+  },
+  "popup_status_queued": {
+    "message": "Aguardando para começar",
+    "description": "Status of a queued download."
+  },
+  "popup_status_waiting": {
+    "message": "Aguardando outro download deste site",
+    "description": "Status of a download waiting for another one from the same site."
+  },
+  "popup_status_running": {
+    "message": "$PERCENT$% salvo",
+    "description": "Progress of a running download.",
+    "placeholders": {
+      "percent": {
+        "content": "$1",
+        "example": "42"
+      }
+    }
+  },
+  "popup_status_running_size": {
+    "message": "$SIZE$ salvos",
+    "description": "Progress of a running download whose total size is unknown.",
+    "placeholders": {
+      "size": {
+        "content": "$1",
+        "example": "48 MB"
+      }
+    }
+  },
+  "popup_status_recording": {
+    "message": "Gravando · $SIZE$",
+    "description": "Status of a live recording.",
+    "placeholders": {
+      "size": {
+        "content": "$1",
+        "example": "48 MB"
+      }
+    }
+  },
+  "popup_status_paused": {
+    "message": "Pausado · $PERCENT$%",
+    "description": "Status of a paused download.",
+    "placeholders": {
+      "percent": {
+        "content": "$1",
+        "example": "20"
+      }
+    }
+  },
+  "popup_status_paused_live": {
+    "message": "Gravação pausada · $SIZE$",
+    "description": "Status of a paused live recording.",
+    "placeholders": {
+      "size": {
+        "content": "$1",
+        "example": "48 MB"
+      }
+    }
+  },
+  "popup_status_failed": {
+    "message": "Não terminou",
+    "description": "Short status of a failed download."
+  },
+  "popup_status_done": {
+    "message": "Salvo",
+    "description": "Short status of a finished download."
+  },
+  "popup_err_auth": {
+    "message": "Abra a página, reproduza o vídeo uma vez e tente de novo.",
+    "description": "Short next step for a download the site refused (HTTP 401 or 403)."
+  },
+  "popup_err_http": {
+    "message": "O site não enviou o vídeo. Tente de novo mais tarde.",
+    "description": "Short next step for other HTTP errors."
+  },
+  "popup_err_incomplete": {
+    "message": "Só uma parte chegou. Tente de novo.",
+    "description": "Short next step for an incomplete download."
+  },
+  "popup_err_quota": {
+    "message": "Libere espaço no disco e tente de novo.",
+    "description": "Short next step when the computer is out of space."
+  },
+  "popup_err_decrypt": {
+    "message": "Não foi possível ler o vídeo. Tente de novo.",
+    "description": "Short next step for a decrypt error."
+  },
+  "popup_err_unknown": {
+    "message": "Algo deu errado. Tente de novo.",
+    "description": "Short next step for an unknown error."
+  },
+  "popup_choices_heading": {
+    "message": "Opções",
+    "description": "Heading of the choices of one item."
+  },
+  "popup_group_quality": {
+    "message": "Qualidade",
+    "description": "Group of video quality choices."
+  },
+  "popup_quality_best": {
+    "message": "Melhor disponível",
+    "description": "Default quality choice."
+  },
+  "popup_quality_height": {
+    "message": "$HEIGHT$p",
+    "description": "Quality choice named by its height in pixels.",
+    "placeholders": {
+      "height": {
+        "content": "$1",
+        "example": "720"
+      }
+    }
+  },
+  "popup_quality_option": {
+    "message": "Opção $N$",
+    "description": "Quality choice with no known size.",
+    "placeholders": {
+      "n": {
+        "content": "$1",
+        "example": "2"
+      }
+    }
+  },
+  "popup_group_audio": {
+    "message": "Áudio",
+    "description": "Group of audio language choices."
+  },
+  "popup_audio_track": {
+    "message": "Áudio $N$",
+    "description": "Audio choice with no name or language.",
+    "placeholders": {
+      "n": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "popup_group_subtitles": {
+    "message": "Legendas",
+    "description": "Group of subtitle choices."
+  },
+  "popup_subtitles_none": {
+    "message": "Nenhuma",
+    "description": "Subtitle choice meaning no subtitles."
+  },
+  "popup_subtitle_track": {
+    "message": "Legendas $N$",
+    "description": "Subtitle choice with no name or language.",
+    "placeholders": {
+      "n": {
+        "content": "$1",
+        "example": "2"
+      }
+    }
+  },
+  "popup_audio_only": {
+    "message": "Somente áudio (MP3)",
+    "description": "Option to save only the sound as MP3."
+  },
+  "popup_tag_mp3": {
+    "message": "MP3",
+    "description": "Small label on a download that saves only the sound."
+  },
+  "popup_downloads_heading": {
+    "message": "Downloads",
+    "description": "Heading of the Downloads view."
+  },
+  "popup_group_attention": {
+    "message": "Precisa de atenção",
+    "description": "Group of failed or waiting downloads."
+  },
+  "popup_group_active": {
+    "message": "Em andamento",
+    "description": "Group of running, paused and queued downloads."
+  },
+  "popup_group_finished": {
+    "message": "Concluídos",
+    "description": "Group of finished and cancelled downloads."
+  },
+  "popup_job_media_gone": {
+    "message": "Não está mais nesta página",
+    "description": "Shown on a download whose video left the current page."
+  },
+  "popup_item_jobs": {
+    "message": "Downloads deste vídeo",
+    "description": "Heading of the list of jobs of one item."
+  },
+  "popup_item_none": {
+    "message": "Nada salvo deste vídeo ainda.",
+    "description": "Shown in the item view when the item has no downloads."
+  },
+  "popup_summary_active": {
+    "message": "$COUNT$ baixando",
+    "description": "Count of active downloads in the summary.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "2"
+      }
+    }
+  },
+  "popup_summary_attention": {
+    "message": "$COUNT$ precisa de atenção",
+    "description": "Count of downloads that need attention in the summary.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "1"
+      }
+    }
+  },
+  "popup_summary_all": {
+    "message": "$COUNT$ downloads",
+    "description": "Count of downloads in the summary when none is active.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "popup_summary_join": {
+    "message": "$FIRST$ · $SECOND$",
+    "description": "Joins two parts of the downloads summary.",
+    "placeholders": {
+      "first": {
+        "content": "$1",
+        "example": "2 downloading"
+      },
+      "second": {
+        "content": "$2",
+        "example": "1 needs attention"
+      }
+    }
+  },
+  "popup_summary_label": {
+    "message": "Downloads: $SUMMARY$",
+    "description": "Accessible name of the summary button.",
+    "placeholders": {
+      "summary": {
+        "content": "$1",
+        "example": "2 downloading"
+      }
+    }
   }
 }
