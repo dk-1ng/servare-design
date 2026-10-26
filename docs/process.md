@@ -27,6 +27,7 @@ Concepts are explained here once; issues, PRs and agents link to them.
 - **Persona.** A short, concrete portrait of a typical user (goals, frustrations, vocabulary, context of use) used to judge design choices: "would Marina understand this?". A proto-persona is built from known assumptions instead of research and is validated later. See `docs/discovery/persona.md`.
 - **Jobs-to-be-done.** Describing what people come to do as a situation, a motivation and an outcome: "When …, I want to …, so I can …". It keeps the design focused on the result the user wants, not on features, and lets tasks be ranked and measured.
 - **Information architecture (IA).** How content and actions are grouped, ordered, named and linked across screens, decided before any visual layout. It answers "where does this live and how do I get there?", and is checked by making sure every piece of data has exactly one sensible home.
+- **Master–detail (drill-down).** A compact list (the master) where choosing an item opens a fuller view of it (the detail), with a clear way back. In a narrow surface the detail replaces the list instead of sitting beside it; focus moves into the detail and returns to the item that opened it. It keeps the list short and scannable while detail stays one step away.
 
 ## Tools
 
